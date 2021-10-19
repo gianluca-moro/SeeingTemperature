@@ -10,16 +10,19 @@ namespace LeptonTcpClient
     {
         private static readonly IPAddress _ipAddress = IPAddress.Parse("10.5.177.178");
         private static readonly int _port = 5555;
-        private static readonly IPEndPoint _remoteEndPoint = new IPEndPoint(_ipAddress, _port);
+        private static readonly IPEndPoint _remoteEndPoint = new(_ipAddress, _port);
 
         private static readonly int bufferSize = 32768;
-        private static readonly string message = "send_frame";
-        private static readonly byte[] messageEncoded = Encoding.UTF8.GetBytes(message);
+        private static readonly string sendFrameMessage = "send_frame";
+        private const string EOF = "<EOF>";
 
         static void Main(string[] args)
         {
+            // Note: currently, if you exit the program with CTRL + C or X button, the lepton_thermal_sender.py (server) will crash
+            // -> TODO: fix
+
             //GetSingleFrame();
-            GetMultipleFrames(100);
+            GetMultipleFrames(20);
         }
 
         public static void GetSingleFrame()
@@ -40,7 +43,7 @@ namespace LeptonTcpClient
                     Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint);
 
                     // Send the data through the socket.  
-                    int bytesSent = sender.Send(messageEncoded);
+                    SendAll(sendFrameMessage, sender);
 
                     // Receive the response from the remote device.
                     var dataString = ReceiveAll(sender);
@@ -48,9 +51,9 @@ namespace LeptonTcpClient
 
                     // Deserialize
                     var thermalData = JsonConvert.DeserializeObject<ThermalData>(dataString);
-                    Console.WriteLine("Resolution: ({0}, {1})", thermalData.Resolution[0], thermalData.Resolution[1]);
+                    Console.WriteLine("Resolution: ({0}, {1})", thermalData?.Temperatures[0].Length, thermalData?.Temperatures.Length);
 
-                    sender.Send(Encoding.UTF8.GetBytes("complete"));
+                    SendAll("complete", sender);
 
                     // Release the socket.  
                     sender.Shutdown(SocketShutdown.Both);
@@ -98,10 +101,10 @@ namespace LeptonTcpClient
 
                     Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint);
 
-                    while (numFrames == -1 ? true : (frameCounter < numFrames))
+                    while (numFrames == -1 || frameCounter < numFrames)
                     {
                         // Send the data through the socket.  
-                        int bytesSent = sender.Send(messageEncoded);
+                        SendAll(sendFrameMessage, sender);
 
                         // Receive the response from the remote device.
                         var dataString = ReceiveAll(sender);
@@ -110,22 +113,25 @@ namespace LeptonTcpClient
                         // Deserialize
                         var thermalData = JsonConvert.DeserializeObject<ThermalData>(dataString);
                         Console.WriteLine("Frame: " + frameCounter++);
-                        Console.WriteLine("Resolution: ({0}, {1})", thermalData.Resolution[0], thermalData.Resolution[1]);
+                        Console.WriteLine("Resolution: ({0}, {1})", thermalData?.Temperatures[0].Length, thermalData?.Temperatures.Length);
                     }
 
-                    sender.Send(Encoding.UTF8.GetBytes("complete"));
+                    SendAll("complete", sender);
 
                     // Release the socket.  
                     sender.Shutdown(SocketShutdown.Both);
                     sender.Close();
 
-                } catch (ArgumentNullException ane)
+                }
+                catch (ArgumentNullException ane)
                 {
                     Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
-                } catch (SocketException se)
+                }
+                catch (SocketException se)
                 {
                     Console.WriteLine("SocketException : {0}", se.ToString());
-                } catch (Exception e)
+                }
+                catch (Exception e)
                 {
                     Console.WriteLine("Unexpected exception : {0}", e.ToString());
                 }
@@ -158,6 +164,11 @@ namespace LeptonTcpClient
             }
 
             return data.Split("<EOF>")[0];
+        }
+
+        private static int SendAll(string message, Socket socket)
+        {
+            return socket.Send(Encoding.UTF8.GetBytes(message + EOF));
         }
     }
 }
