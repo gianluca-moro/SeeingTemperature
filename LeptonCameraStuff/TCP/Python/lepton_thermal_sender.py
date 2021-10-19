@@ -40,7 +40,7 @@ def get_temperature_data():
 
 
 def send_temperature_data_back(temperature_data, connection):
-    serialized_data = json.dumps({'resolution': [frame_width, frame_height], 'temperatures': temperature_data.tolist()})
+    serialized_data = json.dumps({'temperatures': temperature_data.tolist()})
     send_all(serialized_data, connection)
 
 

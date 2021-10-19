@@ -64,11 +64,10 @@ def get_multiple_frames(num_frames=-1):
                 print("Waiting for data")
                 data = recv_all(s)
                 deserialized_data = json.loads(data)
-                res = deserialized_data['resolution']
                 temperature_data = np.asarray(deserialized_data['temperatures'])
                 print("Temperature data received")
                 print("Shape: ", np.shape(temperature_data))
-                print("Resolution: ", res)
+                print(f"Resolution: ({len(temperature_data[0])}, {len(temperature_data)})")
                 print("Frame: ", frame_counter)
                 frame_counter += 1
 
@@ -77,7 +76,7 @@ def get_multiple_frames(num_frames=-1):
                 plt.pause(0.001)
                 
 
-            send_all("complete".encode())
+            send_all("complete", s)
                 
         except KeyboardInterrupt:
             print("\nStop sending frames")
@@ -101,11 +100,10 @@ def get_single_frame():
         print("Waiting for data")
         data = recv_all(s)
         deserialized_data = json.loads(data)
-        res = deserialized_data['resolution']
         temperature_data = np.asarray(deserialized_data['temperatures'])
         print("Temperature data received")
         print("Shape: ", np.shape(temperature_data))
-        print("Resolution: ", res)
+        print(f"Resolution: ({len(temperature_data[0])}, {len(temperature_data)})")
 
         send_all("complete", s)
 
