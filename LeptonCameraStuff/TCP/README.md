@@ -9,7 +9,7 @@ Note: Make sure that you are connected to the ETH VPN when running the C# progra
 
 ### Receiving frames in C#
 You can receive the frames using the C# client by running the "TcpClient.cs" file, e.g. in Visual Studio. In the main function, you can switch between receiving a single frame or recieving multiple frames (either until program exit or a fixed amount of frames)   
-The program receivies the frame as a jSON string and puts it into a ThermalData object which contains the resolution and the temperature data itself. 
+The program receivies the frame as a jSON string and puts it into a ThermalData object which currently just contains the temperature data itself (2D array of celcius degree floats). 
 
 ### Receiving frames in Python 
 You can also receive the frames in Python using one of the following files: 'lepton_thermal_matplotlib.py' or 'lepton_thermal_opencv.py', depending on how you want to display the thermal images / live videos. 
