@@ -14,8 +14,6 @@
 
 import socket
 import json
-
-from numpy.lib.function_base import interp
 from lepton_camera import *
 import matplotlib.pyplot as plt
 import sys
@@ -24,21 +22,25 @@ import numpy as np
 
 HOST = '10.5.177.178'
 PORT = 5555
-BUFF_SIZE = 4096
+BUFF_SIZE = 32768
 
+EOF_MESSAGE = '<EOF>'
 MESSAGE = 'send_frame'
-MESSAGE_ENCODED = MESSAGE.encode()
 
 def recv_all(connection):
-    data = b''
+    data = ''
     while True:
-        part_data = connection.recv(BUFF_SIZE)
+        part_data = connection.recv(BUFF_SIZE).decode("utf-8")
         data += part_data
 
-        if len(part_data) < BUFF_SIZE:
+        if "<EOF>" in part_data:
             break
-        
-    return data.decode("utf-8")
+
+    return data.split("<EOF>")[0]
+
+
+def send_all(message, connection):
+    connection.sendall((message + EOF_MESSAGE).encode())
 
 
 def get_multiple_frames(num_frames=-1):
@@ -56,9 +58,9 @@ def get_multiple_frames(num_frames=-1):
         print("Connection established")
 
         try:
-            while (True if num_frames == -1 else frame_counter < num_frames):
+            while (num_frames == -1 or frame_counter < num_frames):
                 print(f"Sending message: '{MESSAGE}'")
-                s.sendall(MESSAGE_ENCODED)
+                send_all(MESSAGE, s)
                 print("Waiting for data")
                 data = recv_all(s)
                 deserialized_data = json.loads(data)
@@ -71,15 +73,15 @@ def get_multiple_frames(num_frames=-1):
                 frame_counter += 1
 
                 plt.clf()
-                plt.imshow(temperature_data, cmap='hot', interpolation='nearest')
+                plt.imshow(temperature_data, cmap='jet', interpolation='nearest')
                 plt.pause(0.001)
                 
 
-            s.sendall("complete".encode())
+            send_all("complete".encode())
                 
         except KeyboardInterrupt:
             print("\nStop sending frames")
-            s.sendall("stop".encode())
+            send_all("stop", s)
             print("Exit program")
             try:
                 sys.exit(0)
@@ -94,7 +96,7 @@ def get_single_frame():
         s.connect((HOST, PORT))
         print("Connection established")
         print(f"Sending message: '{MESSAGE}'")
-        s.sendall(MESSAGE_ENCODED)
+        send_all(MESSAGE, s)
 
         print("Waiting for data")
         data = recv_all(s)
@@ -105,11 +107,11 @@ def get_single_frame():
         print("Shape: ", np.shape(temperature_data))
         print("Resolution: ", res)
 
-        s.sendall("complete".encode())
+        send_all("complete", s)
 
         print("Creating thermal image")
         plt.figure()
-        plt.imshow(temperature_data, cmap='hot', interpolation='nearest')
+        plt.imshow(temperature_data, cmap='jet', interpolation='nearest')
         plt.title("Full Thermal Image")
         plt.colorbar()
         plt.show()

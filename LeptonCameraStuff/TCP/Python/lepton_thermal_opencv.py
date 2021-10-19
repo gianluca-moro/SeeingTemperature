@@ -14,10 +14,7 @@
 
 import socket
 import json
-
-from numpy.lib.function_base import interp
 from lepton_camera import *
-import matplotlib.pyplot as plt
 import sys
 import os
 import numpy as np
@@ -25,24 +22,28 @@ import cv2
 
 HOST = '10.5.177.178'
 PORT = 5555
-BUFF_SIZE = 4096
+BUFF_SIZE = 32768
 
+EOF_MESSAGE = '<EOF>'
 MESSAGE = 'send_frame'
-MESSAGE_ENCODED = MESSAGE.encode()
 
 # https://learnopencv.com/applycolormap-for-pseudocoloring-in-opencv-c-python/
 COLOR_MAP = cv2.COLORMAP_JET
 
 def recv_all(connection):
-    data = b''
+    data = ''
     while True:
-        part_data = connection.recv(BUFF_SIZE)
+        part_data = connection.recv(BUFF_SIZE).decode("utf-8")
         data += part_data
 
-        if len(part_data) < BUFF_SIZE:
+        if "<EOF>" in part_data:
             break
-        
-    return data.decode("utf-8")
+
+    return data.split("<EOF>")[0]
+
+
+def send_all(message, connection):
+    connection.sendall((message + EOF_MESSAGE).encode())
 
 
 def get_multiple_frames(num_frames=-1):
@@ -60,9 +61,9 @@ def get_multiple_frames(num_frames=-1):
         print("Connection established")
 
         try:
-            while (True if num_frames == -1 else frame_counter < num_frames):
+            while (num_frames == -1 or frame_counter < num_frames):
                 print(f"Sending message: '{MESSAGE}'")
-                s.sendall(MESSAGE_ENCODED)
+                send_all(MESSAGE, s)
                 print("Waiting for data")
                 data = recv_all(s)
                 deserialized_data = json.loads(data)
@@ -79,13 +80,13 @@ def get_multiple_frames(num_frames=-1):
                 cv2.imshow("Thermal Live Video", colored)
                 key = cv2.waitKey(100)
                 if key == 27 or cv2.getWindowProperty("Thermal Live Video", cv2.WND_PROP_VISIBLE) < 1: # ESC key or X button
+                    cv2.destroyAllWindows()
                     break
                 
-            s.sendall("complete".encode())
+            send_all("complete", s)
                 
         except KeyboardInterrupt:
-            print("\nStop sending frames")
-            s.sendall("stop".encode())
+            send_all("stop", s)
             print("Exit program")
             try:
                 sys.exit(0)
@@ -100,7 +101,7 @@ def get_single_frame():
         s.connect((HOST, PORT))
         print("Connection established")
         print(f"Sending message: '{MESSAGE}'")
-        s.sendall(MESSAGE_ENCODED)
+        send_all(MESSAGE, s)
 
         print("Waiting for data")
         data = recv_all(s)
@@ -111,13 +112,19 @@ def get_single_frame():
         print("Shape: ", np.shape(temperature_data))
         print("Resolution: ", res)
 
-        s.sendall("complete".encode())
+        send_all("complete", s)
 
         print("Creating thermal image")
         normed = cv2.normalize(temperature_data, None, 0, 255, cv2.NORM_MINMAX, cv2.CV_8U)
         colored = cv2.applyColorMap(normed, COLOR_MAP)
         cv2.imshow("Thermal Image", colored)
-        cv2.waitKey(0)  
+
+        # keep window open until closed (ESC or X button)
+        while True:
+            key = cv2.waitKey(250)
+            if key == 27 or cv2.getWindowProperty("Thermal Image", cv2.WND_PROP_VISIBLE) < 1:
+                cv2.destroyAllWindows()
+                break
 
 
 def main():

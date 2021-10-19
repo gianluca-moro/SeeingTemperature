@@ -9,21 +9,29 @@ from lepton_camera import *
 
 HOST = '10.5.177.178'
 PORT = 5555
-BUFF_SIZE = 4096
+BUFF_SIZE = 32768
+
+EOF_MESSAGE = '<EOF>'
 
 lepton_camera = LeptonCamera()
 frame_width, frame_height = lepton_camera.frame_width, lepton_camera.frame_height
 
+# TODO: maybe put recv_all and send_all methods into seperate file (tcp_utils.py) 
+# because these are used by server and clients and are identical
 def recv_all(connection):
-    data = b''
+    data = ''
     while True:
-        part_data = connection.recv(BUFF_SIZE)
+        part_data = connection.recv(BUFF_SIZE).decode("utf-8")
         data += part_data
 
-        if len(part_data) < BUFF_SIZE:
+        if "<EOF>" in part_data:
             break
-        
-    return data.decode("utf-8")
+
+    return data.split("<EOF>")[0]
+
+
+def send_all(message, connection):
+    connection.sendall((message + EOF_MESSAGE).encode())
 
 
 def get_temperature_data():
@@ -32,9 +40,8 @@ def get_temperature_data():
 
 
 def send_temperature_data_back(temperature_data, connection):
-    serialized_data = json.dumps({'resolution': [frame_width, frame_height], 'temperatures': temperature_data.tolist()}).encode()
-    print(len(serialized_data))
-    connection.sendall(serialized_data)
+    serialized_data = json.dumps({'resolution': [frame_width, frame_height], 'temperatures': temperature_data.tolist()})
+    send_all(serialized_data, connection)
 
 
 def run_server():
@@ -47,9 +54,6 @@ def run_server():
             print("Looking for client")
             conn, addr = s.accept()
             print(f"Connected by {addr}")
-
-            # TODO: (gimor) currently the server stops sending once client quits
-            #   however, server should keep running (so client can reconnect) until server is stopped
 
             while True:
                 received_msg = recv_all(conn)
