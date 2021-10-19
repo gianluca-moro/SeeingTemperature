@@ -2,10 +2,6 @@
 The Lepton Camera streams the frames to the client (either Python or C#) using a TCP connection.
 
 ### TCP server (Raspberry Pi)
-#### For C# client
-To start the TCP server, run the Python file 'lepton_thermal_sender_csharp.py' on the Raspberry Pi: `python3 lepton_thermal_sender_csharp.py` . This will send the frames from the Lepton camera to the connected client.
-
-#### For Python Client
 To start the TCP server, run the Python file 'lepton_thermal_sender.py' on the Raspberry Pi: ` python3 lepton_thermal_sender.py` . This will send the frames from the Lepton camera to the connected client.
 
 ### TCP client (On different device or on Raspberry Pi)
