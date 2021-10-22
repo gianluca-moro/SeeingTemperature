@@ -12,11 +12,14 @@ public class Logic : MonoBehaviour
     public Material cold;
     public Material fever;
     public Material highFever;
-    // Start is called before the first frame update
+
+    private LeptonTcpClient.TcpClient client = null;
 
     void Start()
     {
-        LeptonTcpClient.TcpClient.GetMultipleFrames(20);
+        //LeptonTcpClient.TcpClient.GetMultipleFrames(20);
+        client = new LeptonTcpClient.TcpClient();
+        client.Setup();
     }
     /* Wikipedia:
      * 36,3 bis 37,4 °C 	Normaltemperatur (afebril)
@@ -24,13 +27,15 @@ public class Logic : MonoBehaviour
      * 38,1 bis 38,5 °C 	leichtes Fieber (febril)
      * 38,6 bis 39,0 °C 	Fieber
      * 39,1 bis 39,9 °C 	hohes Fieber
-     * 40 bis 42 °C 	sehr hohes Fieber (hyperpyretisches Fieber), Krämpfe 
+     * 40 bis 42 °C 	    sehr hohes Fieber (hyperpyretisches Fieber), Krämpfe 
      * 
      */
 
     // Update is called once per frame
     void Update()
     {
+        //LeptonTcpClient.TcpClient.GetSingleFrame();
+        temperature = client.GetSingleFrame().Temperatures[0][0];
         Material currentMaterial = normal;
         if (temperature < 36.5)
         {
@@ -48,5 +53,13 @@ public class Logic : MonoBehaviour
 
         visualizer.GetComponent<Renderer>().material = currentMaterial;
         text.text = temperature.ToString() + "C°";
+    }
+
+    private void OnApplicationQuit()
+    {
+        if(client != null)
+        {
+            client.Cleanup();
+        }
     }
 }
