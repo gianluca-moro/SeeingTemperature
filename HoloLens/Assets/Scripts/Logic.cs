@@ -13,9 +13,10 @@ public class Logic : MonoBehaviour
     public Material fever;
     public Material highFever;
     // Start is called before the first frame update
+
     void Start()
     {
-        
+        LeptonTcpClient.TcpClient.GetMultipleFrames(20);
     }
     /* Wikipedia:
      * 36,3 bis 37,4 °C 	Normaltemperatur (afebril)
