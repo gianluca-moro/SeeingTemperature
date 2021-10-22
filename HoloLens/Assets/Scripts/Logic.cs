@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using TMPro;
+using System.Threading;
 
 public class Logic : MonoBehaviour
 {
@@ -14,12 +16,23 @@ public class Logic : MonoBehaviour
     public Material highFever;
 
     private LeptonTcpClient.TcpClient client = null;
+    private bool isRunning = false;
+    private bool recivedTemp = false;
+    private Thread t;
 
     void Start()
     {
         //LeptonTcpClient.TcpClient.GetMultipleFrames(20);
         client = new LeptonTcpClient.TcpClient();
-        client.Setup();
+        if(client.Setup() == 0)
+        {
+            isRunning = true;
+            t = new Thread(DataProcessing);
+            t.Start();
+        } else
+        {
+            Debug.Log("Connection with Server not established (Logic.cs)");
+        }
     }
     /* Wikipedia:
      * 36,3 bis 37,4 °C 	Normaltemperatur (afebril)
@@ -34,31 +47,54 @@ public class Logic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //LeptonTcpClient.TcpClient.GetSingleFrame();
-        temperature = client.GetSingleFrame().Temperatures[0][0];
-        Material currentMaterial = normal;
-        if (temperature < 36.5)
+        if (recivedTemp)
         {
-            currentMaterial = cold;
-        } else if(temperature > 38.5)
-        {
-            if(temperature <= 39)
+            Material currentMaterial = normal;
+            if (temperature < 36.5)
             {
-                currentMaterial = fever;
-            } else
-            {
-                currentMaterial = highFever;
+                currentMaterial = cold;
             }
+            else if (temperature > 38.5)
+            {
+                if (temperature <= 39)
+                {
+                    currentMaterial = fever;
+                }
+                else
+                {
+                    currentMaterial = highFever;
+                }
+            }
+            visualizer.GetComponent<Renderer>().material = currentMaterial;
+            text.text = temperature.ToString() + "C°";
+            recivedTemp = false;
         }
+    }
 
-        visualizer.GetComponent<Renderer>().material = currentMaterial;
-        text.text = temperature.ToString() + "C°";
+    void DataProcessing()
+    {
+        Debug.Log("Now reading Thermal data");
+        while (isRunning)
+        {
+            try
+            {
+                LeptonTcpClient.ThermalData data = client.GetSingleFrame();
+
+                if (data != null)
+                {
+                    temperature = data.Temperatures[0][0];
+                    recivedTemp = true;
+                }
+            }
+            catch (Exception) { }
+        }
     }
 
     private void OnApplicationQuit()
     {
         if(client != null)
         {
+            isRunning = false;
             client.Cleanup();
         }
     }

@@ -62,6 +62,7 @@ namespace LeptonTcpClient
             if (sender != null) {
                 try
                 {
+                    SendAll("complete", sender);
                     // Release the socket.  
                     sender.Shutdown(SocketShutdown.Both);
                     sender.Close();
@@ -78,18 +79,22 @@ namespace LeptonTcpClient
             ThermalData thermalData = null;
             if (sender != null)
             {
-                // Send the data through the socket.  
-                SendAll(sendFrameMessage, sender);
+                try
+                {
+                    // Send the data through the socket.  
+                    SendAll(sendFrameMessage, sender);
+                    // Receive the response from the remote device.
+                    var dataString = ReceiveAll(sender);
+                    //Console.WriteLine("Received:\n{0}", dataString);
 
-                // Receive the response from the remote device.
-                var dataString = ReceiveAll(sender);
-                //Console.WriteLine("Received:\n{0}", dataString);
+                    // Deserialize
+                    thermalData = JsonConvert.DeserializeObject<ThermalData>(dataString);
+                    //Console.WriteLine("Resolution: ({0}, {1})", thermalData?.Temperatures[0].Length, thermalData?.Temperatures.Length);
 
-                // Deserialize
-                thermalData = JsonConvert.DeserializeObject<ThermalData>(dataString);
-                //Console.WriteLine("Resolution: ({0}, {1})", thermalData?.Temperatures[0].Length, thermalData?.Temperatures.Length);
-
-                SendAll("complete", sender);
+                } catch (Exception e)
+                {
+                    Debug.Log(e.ToString());
+                }
             }
 
             return thermalData;
@@ -107,22 +112,27 @@ namespace LeptonTcpClient
 
             if (sender != null)
             {
-                while (numFrames == -1 || frameCounter < numFrames)
+                try
                 {
-                    // Send the data through the socket.  
-                    SendAll(sendFrameMessage, sender);
+                    while (numFrames == -1 || frameCounter < numFrames)
+                    {
+                        // Send the data through the socket.  
+                        SendAll(sendFrameMessage, sender);
 
-                    // Receive the response from the remote device.
-                    var dataString = ReceiveAll(sender);
-                    //Console.WriteLine("Received:\n{0}", dataString);
+                        // Receive the response from the remote device.
+                        var dataString = ReceiveAll(sender);
+                        //Console.WriteLine("Received:\n{0}", dataString);
 
-                    // Deserialize
-                    var thermalData = JsonConvert.DeserializeObject<ThermalData>(dataString);
-                    Console.WriteLine("Frame: " + frameCounter++);
-                    Console.WriteLine("Resolution: ({0}, {1})", thermalData?.Temperatures[0].Length, thermalData?.Temperatures.Length);
+                        // Deserialize
+                        var thermalData = JsonConvert.DeserializeObject<ThermalData>(dataString);
+                        Console.WriteLine("Frame: " + frameCounter++);
+                        Console.WriteLine("Resolution: ({0}, {1})", thermalData?.Temperatures[0].Length, thermalData?.Temperatures.Length);
+                    }
                 }
-
-                SendAll("complete", sender);
+                catch (Exception e)
+                {
+                    Debug.Log(e.ToString());
+                }
             }
         }
 
