@@ -9,6 +9,7 @@ public class Logic : MonoBehaviour
 {
     public GameObject visualizer;
     public TMP_Text text;
+    public TextMesh textMesh;
     public float temperature = 36;
     public Material normal;
     public Material cold;
@@ -66,7 +67,10 @@ public class Logic : MonoBehaviour
                 }
             }
             visualizer.GetComponent<Renderer>().material = currentMaterial;
-            text.text = temperature.ToString() + "C°";
+            if(text != null)
+                text.text = temperature.ToString() + "C°";
+            if(textMesh != null)
+                textMesh.text = temperature.ToString() + "C°";
             recivedTemp = false;
         }
     }
@@ -80,9 +84,12 @@ public class Logic : MonoBehaviour
             {
                 LeptonTcpClient.ThermalData data = client.GetSingleFrame();
 
-                if (data != null)
+                if (data != null && data.Temperatures != null)
                 {
-                    temperature = data.Temperatures[0][0];
+                    int i, j;
+                    i = data.Temperatures.Length;
+                    j = data.Temperatures[0].Length;
+                    temperature = data.Temperatures[(int)(i/2)][(int)(j / 2)];
                     recivedTemp = true;
                 }
             }

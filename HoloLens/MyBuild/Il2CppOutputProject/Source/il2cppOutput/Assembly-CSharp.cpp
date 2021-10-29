@@ -186,6 +186,8 @@ struct MethodInfo_t;
 struct MonoBehaviour_t37A501200D970A8257124B0EAE00A0FF3DDC354A;
 // System.MulticastDelegate
 struct MulticastDelegate_t;
+// UnityEngine.Object
+struct Object_tF2F3778131EFF286AF62B7B013A170F95A91571A;
 // UnityEngine.UI.RectMask2D
 struct RectMask2D_tD909811991B341D752E4C978C89EFB80FA7A2B15;
 // UnityEngine.RectTransform
@@ -224,6 +226,8 @@ struct TMP_TextElement_tDF9A55D56A0B44EA4EA36DEDF942AEB6369AF832;
 struct TMP_TextInfo_t33ACB74FB814F588497640C86976E5DB6DD7B547;
 // LeptonTcpClient.TcpClient
 struct TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068;
+// UnityEngine.TextMesh
+struct TextMesh_t830C2452CE189A0D35CD9ED26B6B74D506B01273;
 // UnityEngine.Texture2D
 struct Texture2D_t9B604D0D8E28032123641A7E7338FA872E2698BF;
 // LeptonTcpClient.ThermalData
@@ -252,6 +256,7 @@ IL2CPP_EXTERN_C RuntimeClass* IPAddress_t2B5F1762B4B9935BA6CA8FB12C87282C72E035A
 IL2CPP_EXTERN_C RuntimeClass* IPEndPoint_t41C675C79A8B4EA6D5211D9B907137A2C015EA3E_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* JsonConvert_tE6BEC0144590DD363669B76685D1C371866C3D87_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Nullable_1_t864FD0051A05D37F91C857AB496BFCB3FE756103_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Object_tF2F3778131EFF286AF62B7B013A170F95A91571A_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* SocketException_tB04D4347A4A41DC1A8583BBAE5A7C990F78C1E88_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Socket_tD9721140F91BE95BA05B87DD26A855B215D84D09_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A_il2cpp_TypeInfo_var;
@@ -4660,6 +4665,15 @@ public:
 };
 
 
+// UnityEngine.TextMesh
+struct TextMesh_t830C2452CE189A0D35CD9ED26B6B74D506B01273  : public Component_t62FBC8D2420DA4BE9037AFE430740F6B3EECA684
+{
+public:
+
+public:
+};
+
+
 // System.Threading.ThreadStart
 struct ThreadStart_tA13019555BA3CB2B0128F0880760196BF790E687  : public MulticastDelegate_t
 {
@@ -5737,24 +5751,26 @@ public:
 	GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * ___visualizer_4;
 	// TMPro.TMP_Text Logic::text
 	TMP_Text_t86179C97C713E1A6B3751B48DC7A16C874A7B262 * ___text_5;
+	// UnityEngine.TextMesh Logic::textMesh
+	TextMesh_t830C2452CE189A0D35CD9ED26B6B74D506B01273 * ___textMesh_6;
 	// System.Single Logic::temperature
-	float ___temperature_6;
+	float ___temperature_7;
 	// UnityEngine.Material Logic::normal
-	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___normal_7;
+	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___normal_8;
 	// UnityEngine.Material Logic::cold
-	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___cold_8;
+	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___cold_9;
 	// UnityEngine.Material Logic::fever
-	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___fever_9;
+	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___fever_10;
 	// UnityEngine.Material Logic::highFever
-	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___highFever_10;
+	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___highFever_11;
 	// LeptonTcpClient.TcpClient Logic::client
-	TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * ___client_11;
+	TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * ___client_12;
 	// System.Boolean Logic::isRunning
-	bool ___isRunning_12;
+	bool ___isRunning_13;
 	// System.Boolean Logic::recivedTemp
-	bool ___recivedTemp_13;
+	bool ___recivedTemp_14;
 	// System.Threading.Thread Logic::t
-	Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 * ___t_14;
+	Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 * ___t_15;
 
 public:
 	inline static int32_t get_offset_of_visualizer_4() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___visualizer_4)); }
@@ -5775,82 +5791,91 @@ public:
 		Il2CppCodeGenWriteBarrier((void**)(&___text_5), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_temperature_6() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___temperature_6)); }
-	inline float get_temperature_6() const { return ___temperature_6; }
-	inline float* get_address_of_temperature_6() { return &___temperature_6; }
-	inline void set_temperature_6(float value)
+	inline static int32_t get_offset_of_textMesh_6() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___textMesh_6)); }
+	inline TextMesh_t830C2452CE189A0D35CD9ED26B6B74D506B01273 * get_textMesh_6() const { return ___textMesh_6; }
+	inline TextMesh_t830C2452CE189A0D35CD9ED26B6B74D506B01273 ** get_address_of_textMesh_6() { return &___textMesh_6; }
+	inline void set_textMesh_6(TextMesh_t830C2452CE189A0D35CD9ED26B6B74D506B01273 * value)
 	{
-		___temperature_6 = value;
+		___textMesh_6 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___textMesh_6), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_normal_7() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___normal_7)); }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_normal_7() const { return ___normal_7; }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_normal_7() { return &___normal_7; }
-	inline void set_normal_7(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
+	inline static int32_t get_offset_of_temperature_7() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___temperature_7)); }
+	inline float get_temperature_7() const { return ___temperature_7; }
+	inline float* get_address_of_temperature_7() { return &___temperature_7; }
+	inline void set_temperature_7(float value)
 	{
-		___normal_7 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___normal_7), (void*)value);
+		___temperature_7 = value;
 	}
 
-	inline static int32_t get_offset_of_cold_8() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___cold_8)); }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_cold_8() const { return ___cold_8; }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_cold_8() { return &___cold_8; }
-	inline void set_cold_8(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
+	inline static int32_t get_offset_of_normal_8() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___normal_8)); }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_normal_8() const { return ___normal_8; }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_normal_8() { return &___normal_8; }
+	inline void set_normal_8(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
 	{
-		___cold_8 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___cold_8), (void*)value);
+		___normal_8 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___normal_8), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_fever_9() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___fever_9)); }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_fever_9() const { return ___fever_9; }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_fever_9() { return &___fever_9; }
-	inline void set_fever_9(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
+	inline static int32_t get_offset_of_cold_9() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___cold_9)); }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_cold_9() const { return ___cold_9; }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_cold_9() { return &___cold_9; }
+	inline void set_cold_9(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
 	{
-		___fever_9 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___fever_9), (void*)value);
+		___cold_9 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___cold_9), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_highFever_10() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___highFever_10)); }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_highFever_10() const { return ___highFever_10; }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_highFever_10() { return &___highFever_10; }
-	inline void set_highFever_10(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
+	inline static int32_t get_offset_of_fever_10() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___fever_10)); }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_fever_10() const { return ___fever_10; }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_fever_10() { return &___fever_10; }
+	inline void set_fever_10(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
 	{
-		___highFever_10 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___highFever_10), (void*)value);
+		___fever_10 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___fever_10), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_client_11() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___client_11)); }
-	inline TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * get_client_11() const { return ___client_11; }
-	inline TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 ** get_address_of_client_11() { return &___client_11; }
-	inline void set_client_11(TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * value)
+	inline static int32_t get_offset_of_highFever_11() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___highFever_11)); }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_highFever_11() const { return ___highFever_11; }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_highFever_11() { return &___highFever_11; }
+	inline void set_highFever_11(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
 	{
-		___client_11 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___client_11), (void*)value);
+		___highFever_11 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___highFever_11), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_isRunning_12() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___isRunning_12)); }
-	inline bool get_isRunning_12() const { return ___isRunning_12; }
-	inline bool* get_address_of_isRunning_12() { return &___isRunning_12; }
-	inline void set_isRunning_12(bool value)
+	inline static int32_t get_offset_of_client_12() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___client_12)); }
+	inline TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * get_client_12() const { return ___client_12; }
+	inline TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 ** get_address_of_client_12() { return &___client_12; }
+	inline void set_client_12(TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * value)
 	{
-		___isRunning_12 = value;
+		___client_12 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___client_12), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_recivedTemp_13() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___recivedTemp_13)); }
-	inline bool get_recivedTemp_13() const { return ___recivedTemp_13; }
-	inline bool* get_address_of_recivedTemp_13() { return &___recivedTemp_13; }
-	inline void set_recivedTemp_13(bool value)
+	inline static int32_t get_offset_of_isRunning_13() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___isRunning_13)); }
+	inline bool get_isRunning_13() const { return ___isRunning_13; }
+	inline bool* get_address_of_isRunning_13() { return &___isRunning_13; }
+	inline void set_isRunning_13(bool value)
 	{
-		___recivedTemp_13 = value;
+		___isRunning_13 = value;
 	}
 
-	inline static int32_t get_offset_of_t_14() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___t_14)); }
-	inline Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 * get_t_14() const { return ___t_14; }
-	inline Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 ** get_address_of_t_14() { return &___t_14; }
-	inline void set_t_14(Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 * value)
+	inline static int32_t get_offset_of_recivedTemp_14() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___recivedTemp_14)); }
+	inline bool get_recivedTemp_14() const { return ___recivedTemp_14; }
+	inline bool* get_address_of_recivedTemp_14() { return &___recivedTemp_14; }
+	inline void set_recivedTemp_14(bool value)
 	{
-		___t_14 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___t_14), (void*)value);
+		___recivedTemp_14 = value;
+	}
+
+	inline static int32_t get_offset_of_t_15() { return static_cast<int32_t>(offsetof(Logic_tE4B9906CED05A5F2CCB5605FBE2377D4DBAF2E01, ___t_15)); }
+	inline Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 * get_t_15() const { return ___t_15; }
+	inline Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 ** get_address_of_t_15() { return &___t_15; }
+	inline void set_t_15(Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 * value)
+	{
+		___t_15 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___t_15), (void*)value);
 	}
 };
 
@@ -9237,10 +9262,14 @@ inline Renderer_t58147AB5B00224FE1460FD47542DC0DA7EC9378C * GameObject_GetCompon
 }
 // System.Void UnityEngine.Renderer::set_material(UnityEngine.Material)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Renderer_set_material_m8DED7F4F7AF38755C3D7DAFDD613BBE1AAB941BA (Renderer_t58147AB5B00224FE1460FD47542DC0DA7EC9378C * __this, Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___value0, const RuntimeMethod* method);
+// System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Object_op_Inequality_mE1F187520BD83FB7D86A6D850710C4D42B864E90 (Object_tF2F3778131EFF286AF62B7B013A170F95A91571A * ___x0, Object_tF2F3778131EFF286AF62B7B013A170F95A91571A * ___y1, const RuntimeMethod* method);
 // System.String System.Single::ToString()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Single_ToString_m80E7ABED4F4D73F2BE19DDB80D3D92FCD8DFA010 (float* __this, const RuntimeMethod* method);
 // System.String System.String::Concat(System.String,System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Concat_m4B4AB72618348C5DFBFBA8DED84B9E2EBDB55E1B (String_t* ___str00, String_t* ___str11, const RuntimeMethod* method);
+// System.Void UnityEngine.TextMesh::set_text(System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TextMesh_set_text_m5879B13F5C9E4A1D05155839B89CCDB85BE28A04 (TextMesh_t830C2452CE189A0D35CD9ED26B6B74D506B01273 * __this, String_t* ___value0, const RuntimeMethod* method);
 // LeptonTcpClient.ThermalData LeptonTcpClient.TcpClient::GetSingleFrame()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ThermalData_tFA3F050DE6F75C32AB9B9267E694D1CBE43E463B * TcpClient_GetSingleFrame_mB6C76A4F3F2F43D4BC080FD8F5824C41B3E6291E (TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * __this, const RuntimeMethod* method);
 // System.Single[][] LeptonTcpClient.ThermalData::get_Temperatures()
@@ -9384,9 +9413,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Logic_Start_m55D4A05C00E458E914BCBC31AA6
 		// client = new LeptonTcpClient.TcpClient();
 		TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * L_0 = (TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 *)il2cpp_codegen_object_new(TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068_il2cpp_TypeInfo_var);
 		TcpClient__ctor_m490B81E87C4166F469BC10C7F7B9DE7116E70177(L_0, /*hidden argument*/NULL);
-		__this->set_client_11(L_0);
+		__this->set_client_12(L_0);
 		// if(client.Setup() == 0)
-		TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * L_1 = __this->get_client_11();
+		TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * L_1 = __this->get_client_12();
 		NullCheck(L_1);
 		int32_t L_2;
 		L_2 = TcpClient_Setup_m7BDE2A92910CDCDF1DFAC13BBBCE2535C5053DD9(L_1, /*hidden argument*/NULL);
@@ -9397,15 +9426,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Logic_Start_m55D4A05C00E458E914BCBC31AA6
 	}
 	{
 		// isRunning = true;
-		__this->set_isRunning_12((bool)1);
+		__this->set_isRunning_13((bool)1);
 		// t = new Thread(DataProcessing);
 		ThreadStart_tA13019555BA3CB2B0128F0880760196BF790E687 * L_3 = (ThreadStart_tA13019555BA3CB2B0128F0880760196BF790E687 *)il2cpp_codegen_object_new(ThreadStart_tA13019555BA3CB2B0128F0880760196BF790E687_il2cpp_TypeInfo_var);
 		ThreadStart__ctor_m360F4EED0AD96A27D6A9612BF79671F26B30411F(L_3, __this, (intptr_t)((intptr_t)Logic_DataProcessing_mB0BEAA8435D2CAF9B20BECA706374CF60A918589_RuntimeMethod_var), /*hidden argument*/NULL);
 		Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 * L_4 = (Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 *)il2cpp_codegen_object_new(Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414_il2cpp_TypeInfo_var);
 		Thread__ctor_mF22465F0D0E47C11EF25DB552D1047402750BE90(L_4, L_3, /*hidden argument*/NULL);
-		__this->set_t_14(L_4);
+		__this->set_t_15(L_4);
 		// t.Start();
-		Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 * L_5 = __this->get_t_14();
+		Thread_tB9EB71664220EE16451AF3276D78DE6614D2A414 * L_5 = __this->get_t_15();
 		NullCheck(L_5);
 		Thread_Start_m490124B23F5EFD0BB2BED8CA12C77195B9CD9E1B(L_5, /*hidden argument*/NULL);
 		// } else
@@ -9428,24 +9457,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Logic_Update_mDFE3731E537CE5CA35B1B96F8F
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisRenderer_t58147AB5B00224FE1460FD47542DC0DA7EC9378C_mD787758BED3337F182C18CC67C516C2A11B55466_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tF2F3778131EFF286AF62B7B013A170F95A91571A_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral20C36265193535E6956159C9702F15D7A9C100B3);
 		s_Il2CppMethodInitialized = true;
 	}
 	Material_t8927C00353A72755313F046D0CE85178AE8218EE * V_0 = NULL;
 	{
 		// if (recivedTemp)
-		bool L_0 = __this->get_recivedTemp_13();
+		bool L_0 = __this->get_recivedTemp_14();
 		if (!L_0)
 		{
-			goto IL_0094;
+			goto IL_00d0;
 		}
 	}
 	{
 		// Material currentMaterial = normal;
-		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_1 = __this->get_normal_7();
+		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_1 = __this->get_normal_8();
 		V_0 = L_1;
 		// if (temperature < 36.5)
-		float L_2 = __this->get_temperature_6();
+		float L_2 = __this->get_temperature_7();
 		if ((!(((double)((double)((double)L_2))) < ((double)(36.5)))))
 		{
 			goto IL_002d;
@@ -9453,7 +9483,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Logic_Update_mDFE3731E537CE5CA35B1B96F8F
 	}
 	{
 		// currentMaterial = cold;
-		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_3 = __this->get_cold_8();
+		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_3 = __this->get_cold_9();
 		V_0 = L_3;
 		// }
 		goto IL_005c;
@@ -9462,7 +9492,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Logic_Update_mDFE3731E537CE5CA35B1B96F8F
 IL_002d:
 	{
 		// else if (temperature > 38.5)
-		float L_4 = __this->get_temperature_6();
+		float L_4 = __this->get_temperature_7();
 		if ((!(((double)((double)((double)L_4))) > ((double)(38.5)))))
 		{
 			goto IL_005c;
@@ -9470,7 +9500,7 @@ IL_002d:
 	}
 	{
 		// if (temperature <= 39)
-		float L_5 = __this->get_temperature_6();
+		float L_5 = __this->get_temperature_7();
 		if ((!(((float)L_5) <= ((float)(39.0f)))))
 		{
 			goto IL_0055;
@@ -9478,7 +9508,7 @@ IL_002d:
 	}
 	{
 		// currentMaterial = fever;
-		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_6 = __this->get_fever_9();
+		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_6 = __this->get_fever_10();
 		V_0 = L_6;
 		// }
 		goto IL_005c;
@@ -9487,7 +9517,7 @@ IL_002d:
 IL_0055:
 	{
 		// currentMaterial = highFever;
-		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_7 = __this->get_highFever_10();
+		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_7 = __this->get_highFever_11();
 		V_0 = L_7;
 	}
 
@@ -9501,20 +9531,59 @@ IL_005c:
 		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_10 = V_0;
 		NullCheck(L_9);
 		Renderer_set_material_m8DED7F4F7AF38755C3D7DAFDD613BBE1AAB941BA(L_9, L_10, /*hidden argument*/NULL);
-		// text.text = temperature.ToString() + "C�";
+		// if(text != null)
 		TMP_Text_t86179C97C713E1A6B3751B48DC7A16C874A7B262 * L_11 = __this->get_text_5();
-		float* L_12 = __this->get_address_of_temperature_6();
-		String_t* L_13;
-		L_13 = Single_ToString_m80E7ABED4F4D73F2BE19DDB80D3D92FCD8DFA010((float*)L_12, /*hidden argument*/NULL);
-		String_t* L_14;
-		L_14 = String_Concat_m4B4AB72618348C5DFBFBA8DED84B9E2EBDB55E1B(L_13, _stringLiteral20C36265193535E6956159C9702F15D7A9C100B3, /*hidden argument*/NULL);
-		NullCheck(L_11);
-		VirtActionInvoker1< String_t* >::Invoke(66 /* System.Void TMPro.TMP_Text::set_text(System.String) */, L_11, L_14);
-		// recivedTemp = false;
-		__this->set_recivedTemp_13((bool)0);
+		IL2CPP_RUNTIME_CLASS_INIT(Object_tF2F3778131EFF286AF62B7B013A170F95A91571A_il2cpp_TypeInfo_var);
+		bool L_12;
+		L_12 = Object_op_Inequality_mE1F187520BD83FB7D86A6D850710C4D42B864E90(L_11, (Object_tF2F3778131EFF286AF62B7B013A170F95A91571A *)NULL, /*hidden argument*/NULL);
+		if (!L_12)
+		{
+			goto IL_009b;
+		}
+	}
+	{
+		// text.text = temperature.ToString() + "C�";
+		TMP_Text_t86179C97C713E1A6B3751B48DC7A16C874A7B262 * L_13 = __this->get_text_5();
+		float* L_14 = __this->get_address_of_temperature_7();
+		String_t* L_15;
+		L_15 = Single_ToString_m80E7ABED4F4D73F2BE19DDB80D3D92FCD8DFA010((float*)L_14, /*hidden argument*/NULL);
+		String_t* L_16;
+		L_16 = String_Concat_m4B4AB72618348C5DFBFBA8DED84B9E2EBDB55E1B(L_15, _stringLiteral20C36265193535E6956159C9702F15D7A9C100B3, /*hidden argument*/NULL);
+		NullCheck(L_13);
+		VirtActionInvoker1< String_t* >::Invoke(66 /* System.Void TMPro.TMP_Text::set_text(System.String) */, L_13, L_16);
 	}
 
-IL_0094:
+IL_009b:
+	{
+		// if(textMesh != null)
+		TextMesh_t830C2452CE189A0D35CD9ED26B6B74D506B01273 * L_17 = __this->get_textMesh_6();
+		IL2CPP_RUNTIME_CLASS_INIT(Object_tF2F3778131EFF286AF62B7B013A170F95A91571A_il2cpp_TypeInfo_var);
+		bool L_18;
+		L_18 = Object_op_Inequality_mE1F187520BD83FB7D86A6D850710C4D42B864E90(L_17, (Object_tF2F3778131EFF286AF62B7B013A170F95A91571A *)NULL, /*hidden argument*/NULL);
+		if (!L_18)
+		{
+			goto IL_00c9;
+		}
+	}
+	{
+		// textMesh.text = temperature.ToString() + "C�";
+		TextMesh_t830C2452CE189A0D35CD9ED26B6B74D506B01273 * L_19 = __this->get_textMesh_6();
+		float* L_20 = __this->get_address_of_temperature_7();
+		String_t* L_21;
+		L_21 = Single_ToString_m80E7ABED4F4D73F2BE19DDB80D3D92FCD8DFA010((float*)L_20, /*hidden argument*/NULL);
+		String_t* L_22;
+		L_22 = String_Concat_m4B4AB72618348C5DFBFBA8DED84B9E2EBDB55E1B(L_21, _stringLiteral20C36265193535E6956159C9702F15D7A9C100B3, /*hidden argument*/NULL);
+		NullCheck(L_19);
+		TextMesh_set_text_m5879B13F5C9E4A1D05155839B89CCDB85BE28A04(L_19, L_22, /*hidden argument*/NULL);
+	}
+
+IL_00c9:
+	{
+		// recivedTemp = false;
+		__this->set_recivedTemp_14((bool)0);
+	}
+
+IL_00d0:
 	{
 		// }
 		return;
@@ -9531,13 +9600,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Logic_DataProcessing_mB0BEAA8435D2CAF9B2
 		s_Il2CppMethodInitialized = true;
 	}
 	ThermalData_tFA3F050DE6F75C32AB9B9267E694D1CBE43E463B * V_0 = NULL;
+	int32_t V_1 = 0;
+	int32_t V_2 = 0;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	il2cpp::utils::ExceptionSupportStack<int32_t, 2> __leave_targets;
 	{
 		// Debug.Log("Now reading Thermal data");
 		IL2CPP_RUNTIME_CLASS_INIT(Debug_tEB68BCBEB8EFD60F8043C67146DC05E7F50F374B_il2cpp_TypeInfo_var);
 		Debug_Log_mC26E5AD0D8D156C7FFD173AA15827F69225E9DB8(_stringLiteralA30DAEB392576462FE66D53EF07655B658CC0242, /*hidden argument*/NULL);
-		goto IL_0038;
+		goto IL_0058;
 	}
 
 IL_000c:
@@ -9549,41 +9620,72 @@ IL_000d:
 	{ // begin try (depth: 1)
 		{
 			// LeptonTcpClient.ThermalData data = client.GetSingleFrame();
-			TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * L_0 = __this->get_client_11();
+			TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * L_0 = __this->get_client_12();
 			NullCheck(L_0);
 			ThermalData_tFA3F050DE6F75C32AB9B9267E694D1CBE43E463B * L_1;
 			L_1 = TcpClient_GetSingleFrame_mB6C76A4F3F2F43D4BC080FD8F5824C41B3E6291E(L_0, /*hidden argument*/NULL);
 			V_0 = L_1;
-			// if (data != null)
+			// if (data != null && data.Temperatures != null)
 			ThermalData_tFA3F050DE6F75C32AB9B9267E694D1CBE43E463B * L_2 = V_0;
 			if (!L_2)
 			{
-				goto IL_0033;
+				goto IL_0053;
 			}
 		}
 
 IL_001c:
 		{
-			// temperature = data.Temperatures[0][0];
 			ThermalData_tFA3F050DE6F75C32AB9B9267E694D1CBE43E463B * L_3 = V_0;
 			NullCheck(L_3);
 			SingleU5BU5DU5BU5D_tE98ABA33B056D447449236AA9007392350412EC9* L_4;
 			L_4 = ThermalData_get_Temperatures_m199C9CF006CFB657395A6E98E3CE20C99D938C57_inline(L_3, /*hidden argument*/NULL);
-			NullCheck(L_4);
-			int32_t L_5 = 0;
-			SingleU5BU5D_t47E8DBF5B597C122478D1FFBD9DD57399A0650FA* L_6 = (SingleU5BU5D_t47E8DBF5B597C122478D1FFBD9DD57399A0650FA*)(L_4)->GetAt(static_cast<il2cpp_array_size_t>(L_5));
-			NullCheck(L_6);
-			int32_t L_7 = 0;
-			float L_8 = (L_6)->GetAt(static_cast<il2cpp_array_size_t>(L_7));
-			__this->set_temperature_6(L_8);
-			// recivedTemp = true;
-			__this->set_recivedTemp_13((bool)1);
+			if (!L_4)
+			{
+				goto IL_0053;
+			}
 		}
 
-IL_0033:
+IL_0024:
+		{
+			// i = data.Temperatures.Length;
+			ThermalData_tFA3F050DE6F75C32AB9B9267E694D1CBE43E463B * L_5 = V_0;
+			NullCheck(L_5);
+			SingleU5BU5DU5BU5D_tE98ABA33B056D447449236AA9007392350412EC9* L_6;
+			L_6 = ThermalData_get_Temperatures_m199C9CF006CFB657395A6E98E3CE20C99D938C57_inline(L_5, /*hidden argument*/NULL);
+			NullCheck(L_6);
+			V_1 = ((int32_t)((int32_t)(((RuntimeArray*)L_6)->max_length)));
+			// j = data.Temperatures[0].Length;
+			ThermalData_tFA3F050DE6F75C32AB9B9267E694D1CBE43E463B * L_7 = V_0;
+			NullCheck(L_7);
+			SingleU5BU5DU5BU5D_tE98ABA33B056D447449236AA9007392350412EC9* L_8;
+			L_8 = ThermalData_get_Temperatures_m199C9CF006CFB657395A6E98E3CE20C99D938C57_inline(L_7, /*hidden argument*/NULL);
+			NullCheck(L_8);
+			int32_t L_9 = 0;
+			SingleU5BU5D_t47E8DBF5B597C122478D1FFBD9DD57399A0650FA* L_10 = (SingleU5BU5D_t47E8DBF5B597C122478D1FFBD9DD57399A0650FA*)(L_8)->GetAt(static_cast<il2cpp_array_size_t>(L_9));
+			NullCheck(L_10);
+			V_2 = ((int32_t)((int32_t)(((RuntimeArray*)L_10)->max_length)));
+			// temperature = data.Temperatures[(int)(i/2)][(int)(j / 2)];
+			ThermalData_tFA3F050DE6F75C32AB9B9267E694D1CBE43E463B * L_11 = V_0;
+			NullCheck(L_11);
+			SingleU5BU5DU5BU5D_tE98ABA33B056D447449236AA9007392350412EC9* L_12;
+			L_12 = ThermalData_get_Temperatures_m199C9CF006CFB657395A6E98E3CE20C99D938C57_inline(L_11, /*hidden argument*/NULL);
+			int32_t L_13 = V_1;
+			NullCheck(L_12);
+			int32_t L_14 = ((int32_t)((int32_t)L_13/(int32_t)2));
+			SingleU5BU5D_t47E8DBF5B597C122478D1FFBD9DD57399A0650FA* L_15 = (SingleU5BU5D_t47E8DBF5B597C122478D1FFBD9DD57399A0650FA*)(L_12)->GetAt(static_cast<il2cpp_array_size_t>(L_14));
+			int32_t L_16 = V_2;
+			NullCheck(L_15);
+			int32_t L_17 = ((int32_t)((int32_t)L_16/(int32_t)2));
+			float L_18 = (L_15)->GetAt(static_cast<il2cpp_array_size_t>(L_17));
+			__this->set_temperature_7(L_18);
+			// recivedTemp = true;
+			__this->set_recivedTemp_14((bool)1);
+		}
+
+IL_0053:
 		{
 			// }
-			goto IL_0038;
+			goto IL_0058;
 		}
 	} // end try (depth: 1)
 	catch(Il2CppExceptionWrapper& e)
@@ -9591,24 +9693,24 @@ IL_0033:
 		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
 		{
 			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
-			goto CATCH_0035;
+			goto CATCH_0055;
 		}
 		throw e;
 	}
 
-CATCH_0035:
+CATCH_0055:
 	{ // begin catch(System.Exception)
 		// catch (Exception) { }
 		// catch (Exception) { }
 		IL2CPP_POP_ACTIVE_EXCEPTION();
-		goto IL_0038;
+		goto IL_0058;
 	} // end catch (depth: 1)
 
-IL_0038:
+IL_0058:
 	{
 		// while (isRunning)
-		bool L_9 = __this->get_isRunning_12();
-		if (L_9)
+		bool L_19 = __this->get_isRunning_13();
+		if (L_19)
 		{
 			goto IL_000c;
 		}
@@ -9623,7 +9725,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Logic_OnApplicationQuit_mA175FF31868CFDD
 {
 	{
 		// if(client != null)
-		TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * L_0 = __this->get_client_11();
+		TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * L_0 = __this->get_client_12();
 		if (!L_0)
 		{
 			goto IL_001a;
@@ -9631,9 +9733,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Logic_OnApplicationQuit_mA175FF31868CFDD
 	}
 	{
 		// isRunning = false;
-		__this->set_isRunning_12((bool)0);
+		__this->set_isRunning_13((bool)0);
 		// client.Cleanup();
-		TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * L_1 = __this->get_client_11();
+		TcpClient_t07C7CD9E8C507509CBA64F946C7942D6B7337068 * L_1 = __this->get_client_12();
 		NullCheck(L_1);
 		TcpClient_Cleanup_mED6C9D756B821C997AD955BED2E39C7267284DF0(L_1, /*hidden argument*/NULL);
 	}
@@ -9649,7 +9751,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Logic__ctor_mA5733041DC17DC6724C3B54E44B
 {
 	{
 		// public float temperature = 36;
-		__this->set_temperature_6((36.0f));
+		__this->set_temperature_7((36.0f));
 		MonoBehaviour__ctor_mC0995D847F6A95B1A553652636C38A2AA8B13BED(__this, /*hidden argument*/NULL);
 		return;
 	}
