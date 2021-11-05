@@ -86,10 +86,7 @@ public class Logic : MonoBehaviour
 
                 if (data != null && data.Temperatures != null)
                 {
-                    int i, j;
-                    i = data.Temperatures.Length;
-                    j = data.Temperatures[0].Length;
-                    temperature = data.Temperatures[(int)(i/2)][(int)(j / 2)];
+                    temperature = data.Temperatures[60][80];
                     recivedTemp = true;
                 }
             }
