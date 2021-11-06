@@ -9,7 +9,6 @@
 
 import numpy as np
 import cv2
-from matplotlib import pyplot as plt
 
 def match_SIFT_features(image,template):
     print("Match SIFT features")
@@ -32,6 +31,7 @@ def match_SIFT_features(image,template):
         if m.distance < 0.7 * n.distance:
             good.append([m])
 
+    print("Number of good matches:", len(good))
     #print("Draw matches")
     #img3 = cv2.drawMatchesKnn(image, kp1, template, kp2, good, None, flags=2)
     #return img3
@@ -47,6 +47,8 @@ def match_SIFT_features(image,template):
 
     print("Find Homography matrix")
     H, _ =  cv2.findHomography(obj, scene, cv2.RANSAC)
+
+    print("Warp image")
     result = cv2.warpPerspective(image, H, (template.shape[1], template.shape[0]))
 
     '''
@@ -59,10 +61,13 @@ def match_SIFT_features(image,template):
 
 
 # returns pixel coordinates in original-size (160x120) and unrotated thermal image
-def warp_pixel(x, y, H, upscale_factor=1.0):
+# IMPORTANT: Provided pixels coordinates (x,y) correspond to original size hololens image
+def warp_pixel(x, y, H, downscale_factor=1.0, upscale_factor=1.0):
     '''
     In theory:
-        to warp hololens pixel (x,y), we need to calculate H @ [[x], [y], [1]] = [[wx'], [wy'], [w]] 
+        to warp hololens pixel (x,y), 
+        we first need to calculate the coordinates in the downscaled hololens image: x = x / downscale_factor, y = y / downscale_factor
+        we then need to calculate H @ [[x], [y], [1]] = [[wx'], [wy'], [w]] 
         (where @ is matrix multiplication)
         then divide by w to get [[x'], [y'], [1]] where (x',y') are the coordinates in the thermal image
 
@@ -79,13 +84,17 @@ def warp_pixel(x, y, H, upscale_factor=1.0):
         Maybe with a different set of calibration images it might work better
     '''
     print("Homography matrix:\n", H)
+    print(f"Hololens image pixel coordinates: ({x}, {y})")
+    x = int(x / downscale_factor)
+    y = int(y / downscale_factor)
     hololens_img_pixel = np.array([[x], [y], [1]])
-    print(f"Hololens image pixel coordinates: ({hololens_img_pixel[0][0]}, {hololens_img_pixel[1][0]})")
+    print("Hololens image downscale factor:", downscale_factor)
+    print(f"Downscaled Hololens image pixel coordinates: ({x}, {y})")
     warped = H @ hololens_img_pixel     # homogeneous coordinates (wx', wy', w)
     print("Warped homogeneous coordinates:\n", warped)
     normalized = warped / warped[2][0]  # normalized coordinates (x', y', 1)
     print(f"Warped normalized coordinates (= coordinates in upscaled thermal image): ({normalized[0][0]}, {normalized[1][0]})")
-    print("Thermal image upscale factor: ", upscale_factor)
+    print("Thermal image upscale factor:", upscale_factor)
     thermal_img_pixel = normalized / upscale_factor
     print(f"Thermal image pixel coordinates (in rotated image): ({int(thermal_img_pixel[0][0])}, {int(thermal_img_pixel[1][0])})")
     print(f"Thermal image pixel coordinates (in original image): ({int(160 - thermal_img_pixel[1][0])}, {int(thermal_img_pixel[0][0])})")
@@ -94,12 +103,16 @@ def warp_pixel(x, y, H, upscale_factor=1.0):
 
 def main():
     print("Reading images")
-    hololens_img = cv2.imread("CaptureSmall.jpg")
+    hololens_img = cv2.imread("Capture.jpg")
+    hololens_img_orig_size = hololens_img.shape
     # rotate thermal image so both images are oriented the same way for better result
     thermal_img = cv2.rotate(cv2.imread("thermal_image.png"), cv2.ROTATE_90_COUNTERCLOCKWISE)
-    # upscale thermal image for better results
+
+    # resizes images for better results
+    #   upscale thermal image and downscale hololens image
     # TODO: maybe try different rescale factors?
-    thermal_img = cv2.resize(thermal_img, (369, 492))
+    hololens_img = cv2.resize(hololens_img, (1920, 1080), interpolation = cv2.INTER_AREA)
+    thermal_img = cv2.resize(thermal_img, (369, 492), interpolation = cv2.INTER_AREA)
     
     # Apply blurring
     hololens_img = cv2.GaussianBlur(hololens_img, (99,99), cv2.BORDER_DEFAULT)
@@ -122,8 +135,9 @@ def main():
             cv2.destroyAllWindows()
             break
 
+    hololens_img_downscale_factor = hololens_img_orig_size[0] / hololens_img.shape[0]
     thermal_img_upscale_factor = thermal_img.shape[0] / 160
-    x,y = warp_pixel(846, 391, H, thermal_img_upscale_factor)
+    x,y = warp_pixel(1720, 795, H, hololens_img_downscale_factor, thermal_img_upscale_factor)
 
 
 if __name__ == "__main__":
