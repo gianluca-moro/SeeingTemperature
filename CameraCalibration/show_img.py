@@ -5,8 +5,9 @@ import numpy as np
     using this so I can see the exact pixel coordinates
 '''
 
-img = cv2.imread('thermal_image_small.png')
-#img = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE)
+img = cv2.imread('thermal_image.png')
+img = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE)
+#img = cv2.resize(img, (369, 492))
 cv2.imshow("Output", img)
 # keep window open until closed (ESC or X button)
 while True:

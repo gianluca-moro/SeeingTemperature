@@ -1,3 +1,12 @@
+'''
+    Camera Calibration
+        Calibrates the FLIR camera and the front-facing HoloLens camera, 
+        so we know which HoloLens pixel corresponds to which thermal image pixel
+
+        Returns a Homography matrix H which can be used to warp a HoloLens pixel coordinates
+        using the description in the warp_pixel method
+'''
+
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
@@ -36,9 +45,16 @@ def match_SIFT_features(image,template):
         scene[i,0] = kp2[good[i][0].trainIdx].pt[0]
         scene[i,1] = kp2[good[i][0].trainIdx].pt[1]
 
+    print("Find Homography matrix")
     H, _ =  cv2.findHomography(obj, scene, cv2.RANSAC)
     result = cv2.warpPerspective(image, H, (template.shape[1], template.shape[0]))
 
+    '''
+        Homography Matrix with current calibration images (hand on black background, 06.11.21):
+        [[ 4.13230472e-01 -8.58864495e-02 -1.19166692e+02]
+         [ 1.20177305e-01  3.07665391e-01  8.21631527e+01]
+         [ 3.07460187e-04 -2.71324057e-04  1.00000000e+00]]
+    '''
     return result, H
 
 
@@ -71,16 +87,19 @@ def warp_pixel(x, y, H, upscale_factor=1.0):
     print(f"Warped normalized coordinates (= coordinates in upscaled thermal image): ({normalized[0][0]}, {normalized[1][0]})")
     print("Thermal image upscale factor: ", upscale_factor)
     thermal_img_pixel = normalized / upscale_factor
-    print(f"Thermal image pixel coordinates (in rotated image): ({thermal_img_pixel[0][0]}, {thermal_img_pixel[1][0]})")
-    print(f"Thermal image pixel coordinates (in original image): ({160 - thermal_img_pixel[1][0]}, {thermal_img_pixel[0][0]})")
+    print(f"Thermal image pixel coordinates (in rotated image): ({int(thermal_img_pixel[0][0])}, {int(thermal_img_pixel[1][0])})")
+    print(f"Thermal image pixel coordinates (in original image): ({int(160 - thermal_img_pixel[1][0])}, {int(thermal_img_pixel[0][0])})")
     return int(160 - thermal_img_pixel[1][0]), int(thermal_img_pixel[0][0])
 
 
 def main():
-    print("Starting...\nReading images")
+    print("Reading images")
     hololens_img = cv2.imread("CaptureSmall.jpg")
     # rotate thermal image so both images are oriented the same way for better result
     thermal_img = cv2.rotate(cv2.imread("thermal_image.png"), cv2.ROTATE_90_COUNTERCLOCKWISE)
+    # upscale thermal image for better results
+    # TODO: maybe try different rescale factors?
+    thermal_img = cv2.resize(thermal_img, (369, 492))
     
     # Apply blurring
     hololens_img = cv2.GaussianBlur(hololens_img, (99,99), cv2.BORDER_DEFAULT)
