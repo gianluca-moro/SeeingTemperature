@@ -6675,10 +6675,10 @@ struct SpeechSynthesizer_tD3FAAE50F4569E9B6E1D0141C3EFEB83EF90081B_StaticFields
 public:
 	// Cached pointer to IActivationFactory
 	Il2CppIActivationFactory* activationFactory;
-	// Cached pointer to Windows.Media.SpeechSynthesis.IInstalledVoicesStatic2
-	IInstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2* ____iinstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2;
 	// Cached pointer to Windows.Media.SpeechSynthesis.IInstalledVoicesStatic
 	IInstalledVoicesStatic_tC6D6F7AE6B4C3C072BF98C6A5DD1B15B21368615* ____iinstalledVoicesStatic_tC6D6F7AE6B4C3C072BF98C6A5DD1B15B21368615;
+	// Cached pointer to Windows.Media.SpeechSynthesis.IInstalledVoicesStatic2
+	IInstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2* ____iinstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2;
 
 public:
 	inline Il2CppIActivationFactory* get_activationFactory()
@@ -6698,23 +6698,6 @@ public:
 		return returnValue;
 	}
 
-	inline IInstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2* get_____iinstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2()
-	{
-		IInstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2* returnValue = ____iinstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2;
-		if (returnValue == NULL)
-		{
-			const il2cpp_hresult_t hr = get_activationFactory()->QueryInterface(IInstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2::IID, reinterpret_cast<void**>(&returnValue));
-			il2cpp_codegen_com_raise_exception_if_failed(hr, false);
-
-			if (il2cpp_codegen_atomic_compare_exchange_pointer((void**)(&____iinstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2), returnValue, NULL) != NULL)
-			{
-				returnValue->Release();
-				returnValue = ____iinstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2;
-			}
-		}
-		return returnValue;
-	}
-
 	inline IInstalledVoicesStatic_tC6D6F7AE6B4C3C072BF98C6A5DD1B15B21368615* get_____iinstalledVoicesStatic_tC6D6F7AE6B4C3C072BF98C6A5DD1B15B21368615()
 	{
 		IInstalledVoicesStatic_tC6D6F7AE6B4C3C072BF98C6A5DD1B15B21368615* returnValue = ____iinstalledVoicesStatic_tC6D6F7AE6B4C3C072BF98C6A5DD1B15B21368615;
@@ -6727,6 +6710,23 @@ public:
 			{
 				returnValue->Release();
 				returnValue = ____iinstalledVoicesStatic_tC6D6F7AE6B4C3C072BF98C6A5DD1B15B21368615;
+			}
+		}
+		return returnValue;
+	}
+
+	inline IInstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2* get_____iinstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2()
+	{
+		IInstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2* returnValue = ____iinstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2;
+		if (returnValue == NULL)
+		{
+			const il2cpp_hresult_t hr = get_activationFactory()->QueryInterface(IInstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2::IID, reinterpret_cast<void**>(&returnValue));
+			il2cpp_codegen_com_raise_exception_if_failed(hr, false);
+
+			if (il2cpp_codegen_atomic_compare_exchange_pointer((void**)(&____iinstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2), returnValue, NULL) != NULL)
+			{
+				returnValue->Release();
+				returnValue = ____iinstalledVoicesStatic2_t8571C4F9A0D69E9054E2B0C4FB640451EDE0CCD2;
 			}
 		}
 		return returnValue;

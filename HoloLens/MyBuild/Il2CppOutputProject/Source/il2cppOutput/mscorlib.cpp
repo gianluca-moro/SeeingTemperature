@@ -923,6 +923,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral1A9141C6D604CE4530FB3983D2DD3178E36CC069
 IL2CPP_EXTERN_C String_t* _stringLiteral1B548BEAD44216247E991F18006F8DEA22021F68;
 IL2CPP_EXTERN_C String_t* _stringLiteral1D0869F0DCDD1CF98A9000A05B2566792BCC374B;
 IL2CPP_EXTERN_C String_t* _stringLiteral1D69E6FF3BD287373574E6D499341092BAED1CF8;
+IL2CPP_EXTERN_C String_t* _stringLiteral1FFB38234ADE8B08A9F5A38639C403CA33C20DD6;
 IL2CPP_EXTERN_C String_t* _stringLiteral218F5A08519088A96BE3C1074984C53EA49F1CCA;
 IL2CPP_EXTERN_C String_t* _stringLiteral21DDD46A31A90051E0424907A787DB1D19854FDB;
 IL2CPP_EXTERN_C String_t* _stringLiteral22E516BA4349DCF48E59694431A666940C3804AC;
@@ -1111,6 +1112,7 @@ IL2CPP_EXTERN_C const RuntimeMethod* Activator_CreateInstance_mDA9E0D3821BD2C604
 IL2CPP_EXTERN_C const RuntimeMethod* ActivityTracker_ActivityChanging_m356AF950384F04BC1C90B5BC8C0D12194C9DC624_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* AggregateException_GetObjectData_m07FAF7127582C9A943177D1FB1691B8775F0B499_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* AggregateException__ctor_m49FC3C428AFF78E1A6A463A288EF73A44FC3FE0D_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AggregateException__ctor_m880DBEA692CD1E0843E37B54EEBD75AB1802F123_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* AggregateException__ctor_m954454223A814C931AEE3CB766F4AEF77A3B643E_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* AggregateException__ctor_mA8B0847E655131803DD45B590E6701FCE1288F66_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* AppDomainLevelActivator_Activate_m42E1F68BB9ED9F2095110C5E956B584036637665_RuntimeMethod_var;
@@ -15712,6 +15714,8 @@ inline void ReadOnlyCollection_1__ctor_mA48648FCA7B819FC3FEA83CEC93E4E1894B7B8AB
 {
 	((  void (*) (ReadOnlyCollection_1_t06CAAF5787D8FDE0CB0F04082673EC9B212451BE *, RuntimeObject*, const RuntimeMethod*))ReadOnlyCollection_1__ctor_mED7425C8A39DDAE57BB831E4903F987E9D033BF2_gshared)(__this, ___list0, method);
 }
+// System.Void System.Exception::.ctor(System.String,System.Exception)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Exception__ctor_mB842BA6E644CDB9DB058F5628BB90DF5EF22C080 (Exception_t * __this, String_t* ___message0, Exception_t * ___innerException1, const RuntimeMethod* method);
 // System.Void System.AggregateException::.ctor(System.String,System.Collections.Generic.IEnumerable`1<System.Exception>)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AggregateException__ctor_m06A430C3D15429F6EEC8BF795FA50A518C4B48FB (AggregateException_t45A871D3DBDA3E28FBCD8DF21F6772238FC55BD1 * __this, String_t* ___message0, RuntimeObject* ___innerExceptions1, const RuntimeMethod* method);
 // System.Void System.AggregateException::.ctor(System.String,System.Exception[])
@@ -15723,8 +15727,6 @@ inline void List_1__ctor_m457419AB8D5A00E09683BE635092BE4848B4582D (List_1_t4332
 }
 // System.Void System.AggregateException::.ctor(System.String,System.Collections.Generic.IList`1<System.Exception>)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AggregateException__ctor_mA8B0847E655131803DD45B590E6701FCE1288F66 (AggregateException_t45A871D3DBDA3E28FBCD8DF21F6772238FC55BD1 * __this, String_t* ___message0, RuntimeObject* ___innerExceptions1, const RuntimeMethod* method);
-// System.Void System.Exception::.ctor(System.String,System.Exception)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Exception__ctor_mB842BA6E644CDB9DB058F5628BB90DF5EF22C080 (Exception_t * __this, String_t* ___message0, Exception_t * ___innerException1, const RuntimeMethod* method);
 // System.Void System.AggregateException::.ctor(System.String,System.Collections.Generic.IEnumerable`1<System.Runtime.ExceptionServices.ExceptionDispatchInfo>)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AggregateException__ctor_m9A3EC8C177CC1E6F04AC19EDE79E5367E82F3042 (AggregateException_t45A871D3DBDA3E28FBCD8DF21F6772238FC55BD1 * __this, String_t* ___message0, RuntimeObject* ___innerExceptionInfos1, const RuntimeMethod* method);
 // System.Void System.Collections.Generic.List`1<System.Runtime.ExceptionServices.ExceptionDispatchInfo>::.ctor(System.Collections.Generic.IEnumerable`1<T>)
@@ -25511,6 +25513,49 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AggregateException__ctor_m8E6793E83C302D
 		ReadOnlyCollection_1_t06CAAF5787D8FDE0CB0F04082673EC9B212451BE * L_2 = (ReadOnlyCollection_1_t06CAAF5787D8FDE0CB0F04082673EC9B212451BE *)il2cpp_codegen_object_new(ReadOnlyCollection_1_t06CAAF5787D8FDE0CB0F04082673EC9B212451BE_il2cpp_TypeInfo_var);
 		ReadOnlyCollection_1__ctor_mA48648FCA7B819FC3FEA83CEC93E4E1894B7B8AB(L_2, (RuntimeObject*)(RuntimeObject*)L_1, /*hidden argument*/ReadOnlyCollection_1__ctor_mA48648FCA7B819FC3FEA83CEC93E4E1894B7B8AB_RuntimeMethod_var);
 		__this->set_m_innerExceptions_17(L_2);
+		return;
+	}
+}
+// System.Void System.AggregateException::.ctor(System.String,System.Exception)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AggregateException__ctor_m880DBEA692CD1E0843E37B54EEBD75AB1802F123 (AggregateException_t45A871D3DBDA3E28FBCD8DF21F6772238FC55BD1 * __this, String_t* ___message0, Exception_t * ___innerException1, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ExceptionU5BU5D_t683CE8E24950657A060E640B8956913D867F952D_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ReadOnlyCollection_1__ctor_mA48648FCA7B819FC3FEA83CEC93E4E1894B7B8AB_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ReadOnlyCollection_1_t06CAAF5787D8FDE0CB0F04082673EC9B212451BE_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		String_t* L_0 = ___message0;
+		Exception_t * L_1 = ___innerException1;
+		IL2CPP_RUNTIME_CLASS_INIT(Exception_t_il2cpp_TypeInfo_var);
+		Exception__ctor_mB842BA6E644CDB9DB058F5628BB90DF5EF22C080(__this, L_0, L_1, /*hidden argument*/NULL);
+		Exception_t * L_2 = ___innerException1;
+		if (L_2)
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		ArgumentNullException_tFB5C4621957BC53A7D1B4FDD5C38B4D6E15DB8FB * L_3 = (ArgumentNullException_tFB5C4621957BC53A7D1B4FDD5C38B4D6E15DB8FB *)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentNullException_tFB5C4621957BC53A7D1B4FDD5C38B4D6E15DB8FB_il2cpp_TypeInfo_var)));
+		ArgumentNullException__ctor_m81AB157B93BFE2FBFDB08B88F84B444293042F97(L_3, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral1FFB38234ADE8B08A9F5A38639C403CA33C20DD6)), /*hidden argument*/NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_3, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&AggregateException__ctor_m880DBEA692CD1E0843E37B54EEBD75AB1802F123_RuntimeMethod_var)));
+	}
+
+IL_0016:
+	{
+		ExceptionU5BU5D_t683CE8E24950657A060E640B8956913D867F952D* L_4 = (ExceptionU5BU5D_t683CE8E24950657A060E640B8956913D867F952D*)(ExceptionU5BU5D_t683CE8E24950657A060E640B8956913D867F952D*)SZArrayNew(ExceptionU5BU5D_t683CE8E24950657A060E640B8956913D867F952D_il2cpp_TypeInfo_var, (uint32_t)1);
+		ExceptionU5BU5D_t683CE8E24950657A060E640B8956913D867F952D* L_5 = L_4;
+		Exception_t * L_6 = ___innerException1;
+		NullCheck(L_5);
+		ArrayElementTypeCheck (L_5, L_6);
+		(L_5)->SetAt(static_cast<il2cpp_array_size_t>(0), (Exception_t *)L_6);
+		ReadOnlyCollection_1_t06CAAF5787D8FDE0CB0F04082673EC9B212451BE * L_7 = (ReadOnlyCollection_1_t06CAAF5787D8FDE0CB0F04082673EC9B212451BE *)il2cpp_codegen_object_new(ReadOnlyCollection_1_t06CAAF5787D8FDE0CB0F04082673EC9B212451BE_il2cpp_TypeInfo_var);
+		ReadOnlyCollection_1__ctor_mA48648FCA7B819FC3FEA83CEC93E4E1894B7B8AB(L_7, (RuntimeObject*)(RuntimeObject*)L_5, /*hidden argument*/ReadOnlyCollection_1__ctor_mA48648FCA7B819FC3FEA83CEC93E4E1894B7B8AB_RuntimeMethod_var);
+		__this->set_m_innerExceptions_17(L_7);
 		return;
 	}
 }

@@ -27975,7 +27975,7 @@ IL_002f:
 		L_12 = String_get_Chars_m9B1A5E4C8D70AA33A60F03735AF7B77AB9DBBA70(L_9, ((int32_t)il2cpp_codegen_add((int32_t)L_10, (int32_t)L_11)), /*hidden argument*/NULL);
 		NullCheck(L_8);
 		Il2CppChar L_13;
-		L_13 = VirtFuncInvoker1< Il2CppChar, Il2CppChar >::Invoke(7 /* System.Char System.Globalization.TextInfo::ToLower(System.Char) */, L_8, L_12);
+		L_13 = VirtFuncInvoker1< Il2CppChar, Il2CppChar >::Invoke(8 /* System.Char System.Globalization.TextInfo::ToLower(System.Char) */, L_8, L_12);
 		String_t* L_14 = __this->get__pattern_3();
 		int32_t L_15 = V_1;
 		NullCheck(L_14);

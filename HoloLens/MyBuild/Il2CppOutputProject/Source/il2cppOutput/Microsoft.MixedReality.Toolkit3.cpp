@@ -5976,14 +5976,14 @@ public:
 	IResourceLoaderFactory_t1BA1C3DE378AA9712A71D4944E68129D2443D0F3* ____iresourceLoaderFactory_t1BA1C3DE378AA9712A71D4944E68129D2443D0F3;
 	// Cached pointer to IActivationFactory
 	Il2CppIActivationFactory* activationFactory;
+	// Cached pointer to Windows.ApplicationModel.Resources.IResourceLoaderStatics2
+	IResourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D* ____iresourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D;
 	// Cached pointer to Windows.ApplicationModel.Resources.IResourceLoaderStatics4
 	IResourceLoaderStatics4_tE9BA35763B49527B6FAE6053A6A1250DFC720890* ____iresourceLoaderStatics4_tE9BA35763B49527B6FAE6053A6A1250DFC720890;
 	// Cached pointer to Windows.ApplicationModel.Resources.IResourceLoaderStatics
 	IResourceLoaderStatics_tA244DD4DADA9743A5F1F1E6E336E19AD8CA5C46F* ____iresourceLoaderStatics_tA244DD4DADA9743A5F1F1E6E336E19AD8CA5C46F;
 	// Cached pointer to Windows.ApplicationModel.Resources.IResourceLoaderStatics3
 	IResourceLoaderStatics3_tAD0E958AE0F426D9C3F756415B02BF92825541DE* ____iresourceLoaderStatics3_tAD0E958AE0F426D9C3F756415B02BF92825541DE;
-	// Cached pointer to Windows.ApplicationModel.Resources.IResourceLoaderStatics2
-	IResourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D* ____iresourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D;
 
 public:
 	inline IResourceLoaderFactory_t1BA1C3DE378AA9712A71D4944E68129D2443D0F3* get_____iresourceLoaderFactory_t1BA1C3DE378AA9712A71D4944E68129D2443D0F3()
@@ -6015,6 +6015,23 @@ public:
 			{
 				returnValue->Release();
 				returnValue = activationFactory;
+			}
+		}
+		return returnValue;
+	}
+
+	inline IResourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D* get_____iresourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D()
+	{
+		IResourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D* returnValue = ____iresourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D;
+		if (returnValue == NULL)
+		{
+			const il2cpp_hresult_t hr = get_activationFactory()->QueryInterface(IResourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D::IID, reinterpret_cast<void**>(&returnValue));
+			il2cpp_codegen_com_raise_exception_if_failed(hr, false);
+
+			if (il2cpp_codegen_atomic_compare_exchange_pointer((void**)(&____iresourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D), returnValue, NULL) != NULL)
+			{
+				returnValue->Release();
+				returnValue = ____iresourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D;
 			}
 		}
 		return returnValue;
@@ -6066,23 +6083,6 @@ public:
 			{
 				returnValue->Release();
 				returnValue = ____iresourceLoaderStatics3_tAD0E958AE0F426D9C3F756415B02BF92825541DE;
-			}
-		}
-		return returnValue;
-	}
-
-	inline IResourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D* get_____iresourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D()
-	{
-		IResourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D* returnValue = ____iresourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D;
-		if (returnValue == NULL)
-		{
-			const il2cpp_hresult_t hr = get_activationFactory()->QueryInterface(IResourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D::IID, reinterpret_cast<void**>(&returnValue));
-			il2cpp_codegen_com_raise_exception_if_failed(hr, false);
-
-			if (il2cpp_codegen_atomic_compare_exchange_pointer((void**)(&____iresourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D), returnValue, NULL) != NULL)
-			{
-				returnValue->Release();
-				returnValue = ____iresourceLoaderStatics2_tB96160D4310161F81D4A7C0D5E7D68228661CE5D;
 			}
 		}
 		return returnValue;

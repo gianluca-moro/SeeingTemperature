@@ -322,6 +322,7 @@ IL2CPP_EXTERN_C const RuntimeMethod* SubsystemProvider_1__ctor_mD86DEB0B4DF879B2
 IL2CPP_EXTERN_C const RuntimeMethod* SubsystemProvider_1__ctor_mDB4B33AED139FADE39F8488116F811DA2F601EAF_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* SubsystemWithProvider_3__ctor_mD3D1B91DF52028332010B72032C7E8388C99CEA4_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* SubsystemWithProvider_3_get_provider_m080533A05983B6767F8B3470E127A772D0D59530_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* SubsystemWithProvider_3_get_provider_m6804A0C76FB5F7C9925F2153F33A7E44BBD95F0E_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* SubsystemWithProvider_3_get_provider_mAA0B384C82E784EFEEE8ABCC29FCCB1AE4106ED3_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* SubsystemWithProvider_3_get_provider_mBEE88C3ED3C5B88706A9904FAE0896E52B978DAC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* TrackingSubsystem_4__ctor_m66B311A47D5E648C66011BA6F376723D0BAB98DE_RuntimeMethod_var;
@@ -6286,6 +6287,11 @@ inline void SubsystemWithProvider_3__ctor_mD3D1B91DF52028332010B72032C7E8388C99C
 {
 	((  void (*) (SubsystemWithProvider_3_t646DFCE31181130FB557E4AFA37198CF3170977F *, const RuntimeMethod*))SubsystemWithProvider_3__ctor_m547D656ED6A22E04230EE777D2EB7A68BA51212F_gshared)(__this, method);
 }
+// !2 UnityEngine.SubsystemsImplementation.SubsystemWithProvider`3<UnityEngine.XR.ARSubsystems.XRSessionSubsystem,UnityEngine.XR.ARSubsystems.XRSessionSubsystemDescriptor,UnityEngine.XR.ARSubsystems.XRSessionSubsystem/Provider>::get_provider()
+inline Provider_t4C3675997BB8AF3A6A32C3EC3C93C10E4D3E8D1A * SubsystemWithProvider_3_get_provider_m6804A0C76FB5F7C9925F2153F33A7E44BBD95F0E_inline (SubsystemWithProvider_3_t646DFCE31181130FB557E4AFA37198CF3170977F * __this, const RuntimeMethod* method)
+{
+	return ((  Provider_t4C3675997BB8AF3A6A32C3EC3C93C10E4D3E8D1A * (*) (SubsystemWithProvider_3_t646DFCE31181130FB557E4AFA37198CF3170977F *, const RuntimeMethod*))SubsystemWithProvider_3_get_provider_m1C17796ABB973D3A5F6B1C31B84298C076AA7E1B_gshared_inline)(__this, method);
+}
 // System.Void UnityEngine.XR.ARSubsystems.XRSessionSubsystemDescriptor::.ctor(UnityEngine.XR.ARSubsystems.XRSessionSubsystemDescriptor/Cinfo)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRSessionSubsystemDescriptor__ctor_mC3487128AC53B5697213AFF8B2F98F1C3288B3A7 (XRSessionSubsystemDescriptor_tC45A49D1179090D5C6D3B3DC1DC31CAB5A627B1C * __this, Cinfo_t2842A97DA95F40ECADDCA24A291B6114A3A5F71A  ___cinfo0, const RuntimeMethod* method);
 // System.Void UnityEngine.SubsystemsImplementation.SubsystemDescriptorWithProvider`2<UnityEngine.XR.ARSubsystems.XRSessionSubsystem,UnityEngine.XR.ARSubsystems.XRSessionSubsystem/Provider>::.ctor()
@@ -10023,6 +10029,44 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRSessionSubsystem__ctor_m8485F39F339764
 		__this->set_m_ConfigurationChooser_5(L_1);
 		// }
 		return;
+	}
+}
+// UnityEngine.XR.ARSubsystems.TrackingState UnityEngine.XR.ARSubsystems.XRSessionSubsystem::get_trackingState()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRSessionSubsystem_get_trackingState_m65EE2B0335117F7508AC8A82DB81421AC88AC687 (XRSessionSubsystem_t8AD3C01568AA19BF038D23A6031FF9814CAF93CD * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&SubsystemWithProvider_3_get_provider_m6804A0C76FB5F7C9925F2153F33A7E44BBD95F0E_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		// public TrackingState trackingState => provider.trackingState;
+		Provider_t4C3675997BB8AF3A6A32C3EC3C93C10E4D3E8D1A * L_0;
+		L_0 = SubsystemWithProvider_3_get_provider_m6804A0C76FB5F7C9925F2153F33A7E44BBD95F0E_inline(__this, /*hidden argument*/SubsystemWithProvider_3_get_provider_m6804A0C76FB5F7C9925F2153F33A7E44BBD95F0E_RuntimeMethod_var);
+		NullCheck(L_0);
+		int32_t L_1;
+		L_1 = VirtFuncInvoker0< int32_t >::Invoke(19 /* UnityEngine.XR.ARSubsystems.TrackingState UnityEngine.XR.ARSubsystems.XRSessionSubsystem/Provider::get_trackingState() */, L_0);
+		return L_1;
+	}
+}
+// UnityEngine.XR.ARSubsystems.NotTrackingReason UnityEngine.XR.ARSubsystems.XRSessionSubsystem::get_notTrackingReason()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRSessionSubsystem_get_notTrackingReason_m2FB94CC40A6732E380A9713537C13D1067EC8928 (XRSessionSubsystem_t8AD3C01568AA19BF038D23A6031FF9814CAF93CD * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&SubsystemWithProvider_3_get_provider_m6804A0C76FB5F7C9925F2153F33A7E44BBD95F0E_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		// public NotTrackingReason notTrackingReason => provider.notTrackingReason;
+		Provider_t4C3675997BB8AF3A6A32C3EC3C93C10E4D3E8D1A * L_0;
+		L_0 = SubsystemWithProvider_3_get_provider_m6804A0C76FB5F7C9925F2153F33A7E44BBD95F0E_inline(__this, /*hidden argument*/SubsystemWithProvider_3_get_provider_m6804A0C76FB5F7C9925F2153F33A7E44BBD95F0E_RuntimeMethod_var);
+		NullCheck(L_0);
+		int32_t L_1;
+		L_1 = VirtFuncInvoker0< int32_t >::Invoke(20 /* UnityEngine.XR.ARSubsystems.NotTrackingReason UnityEngine.XR.ARSubsystems.XRSessionSubsystem/Provider::get_notTrackingReason() */, L_0);
+		return L_1;
 	}
 }
 #ifdef __clang__

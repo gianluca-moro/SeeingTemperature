@@ -106,6 +106,14 @@
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Async_CodeGen.c">
     </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Demos.UX.Interactables_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Extensions.HandPhysics_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Extensions.SceneTransitionService_CodeGen.c">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Extensions.Tracking_CodeGen.c">
+    </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Gltf_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Providers.OpenXR_CodeGen.c">
@@ -266,6 +274,10 @@
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Assembly-CSharp.cpp">
     </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Assembly-CSharp1.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Assembly-CSharp2.cpp">
+    </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Assembly-CSharp_Attr.cpp">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\GenericMethods.cpp">
@@ -279,6 +291,8 @@
     <ClCompile Include="Source\il2cppOutput\GenericMethods12.cpp">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\GenericMethods13.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\GenericMethods14.cpp">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\GenericMethods2.cpp">
     </ClCompile>
@@ -391,6 +405,8 @@
     <ClCompile Include="Source\il2cppOutput\Generics50.cpp">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Generics51.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Generics52.cpp">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Generics6.cpp">
     </ClCompile>
@@ -509,6 +525,10 @@
     <ClCompile Include="Source\il2cppOutput\Il2CppCCWs124.cpp">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppCCWs125.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Il2CppCCWs126.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Il2CppCCWs127.cpp">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppCCWs13.cpp">
     </ClCompile>
@@ -824,6 +844,10 @@
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions151.cpp">
     </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions152.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions153.cpp">
+    </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions16.cpp">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions17.cpp">
@@ -1027,6 +1051,22 @@
     <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Async_Attr.cpp">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Demos.UX.Interactables.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Demos.UX.Interactables_Attr.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Extensions.HandPhysics_Attr.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Extensions.SceneTransitionService.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Extensions.SceneTransitionService_Attr.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Extensions.Tracking.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Extensions.Tracking_Attr.cpp">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\Microsoft.MixedReality.Toolkit.Gltf.cpp">
     </ClCompile>

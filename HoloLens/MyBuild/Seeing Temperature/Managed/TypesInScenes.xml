@@ -27,6 +27,7 @@
 		<type fullname="UnityEngine.MeshFilter" preserve="nothing"/>
 		<type fullname="UnityEngine.SkinnedMeshRenderer" preserve="nothing"/>
 		<type fullname="UnityEngine.MeshRenderer" preserve="nothing"/>
+		<type fullname="UnityEngine.SpriteRenderer" preserve="nothing"/>
 		<type fullname="UnityEngine.AudioSource" preserve="nothing"/>
 		<type fullname="UnityEngine.AudioBehaviour" preserve="nothing"/>
 		<type fullname="UnityEngine.AudioListener" preserve="nothing"/>
@@ -57,6 +58,7 @@
 	<assembly fullname="Assembly-CSharp">
 		<type fullname="Follow" preserve="nothing"/>
 		<type fullname="Logic" preserve="nothing"/>
+		<type fullname="MyPhotoCapture" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Microsoft.MixedReality.OpenXR">
 		<type fullname="Microsoft.MixedReality.OpenXR.HPMixedRealityControllerProfile" preserve="nothing"/>
@@ -86,11 +88,18 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.SpherePointerGrabPoint" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.SpherePointerVisual" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.TouchPointer" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.PhysicalPressEventRouter" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Teleport.ParabolicTeleportPointer" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Teleport.TeleportCursor" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.ButtonConfigHelper" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.ButtonIconSet" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ConstraintManager" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.Interactable" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ObjectManipulator" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.PressableButtonHoloLens2" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.RotationAxisConstraint" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.States" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.Theme" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.Solvers.SolverHandler" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Microsoft.MixedReality.Toolkit.Services.InputAnimation">
@@ -103,6 +112,7 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.GazeProvider" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityInputModule" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.NearInteractionGrabbable" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.Input.NearInteractionTouchable" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Microsoft.MixedReality.Toolkit">
 		<type fullname="Microsoft.MixedReality.Toolkit.Boundary.MixedRealityBoundaryVisualizationProfile" preserve="nothing"/>
@@ -110,7 +120,6 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.BaseHandVisualizer" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerMappingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerVisualizationProfile" preserve="nothing"/>
-		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityEyeTrackingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityGesturesProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityHandTrackingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityInputActionRulesProfile" preserve="nothing"/>
@@ -131,6 +140,7 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.BezierDataProvider" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.BezierInertia" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.HoverLight" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.MaintainBorderLightWidth" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.MixedRealityLineRenderer" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.ParabolaPhysicalLineDataProvider" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.ProximityLight" preserve="nothing"/>
@@ -146,6 +156,7 @@
 		<type fullname="TMPro.TMP_Settings" preserve="nothing"/>
 		<type fullname="TMPro.TMP_SpriteAsset" preserve="nothing"/>
 		<type fullname="TMPro.TMP_StyleSheet" preserve="nothing"/>
+		<type fullname="TMPro.TextMeshPro" preserve="nothing"/>
 		<type fullname="TMPro.TextMeshProUGUI" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Unity.XR.Management">

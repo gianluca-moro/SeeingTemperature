@@ -268,8 +268,10 @@ struct NativeConditionalAttribute_t659349956F06958D4D05443BD06FF5CDC767C88B  : p
 public:
 	// System.String UnityEngine.Bindings.NativeConditionalAttribute::<Condition>k__BackingField
 	String_t* ___U3CConditionU3Ek__BackingField_0;
+	// System.String UnityEngine.Bindings.NativeConditionalAttribute::<StubReturnStatement>k__BackingField
+	String_t* ___U3CStubReturnStatementU3Ek__BackingField_1;
 	// System.Boolean UnityEngine.Bindings.NativeConditionalAttribute::<Enabled>k__BackingField
-	bool ___U3CEnabledU3Ek__BackingField_1;
+	bool ___U3CEnabledU3Ek__BackingField_2;
 
 public:
 	inline static int32_t get_offset_of_U3CConditionU3Ek__BackingField_0() { return static_cast<int32_t>(offsetof(NativeConditionalAttribute_t659349956F06958D4D05443BD06FF5CDC767C88B, ___U3CConditionU3Ek__BackingField_0)); }
@@ -281,12 +283,21 @@ public:
 		Il2CppCodeGenWriteBarrier((void**)(&___U3CConditionU3Ek__BackingField_0), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_U3CEnabledU3Ek__BackingField_1() { return static_cast<int32_t>(offsetof(NativeConditionalAttribute_t659349956F06958D4D05443BD06FF5CDC767C88B, ___U3CEnabledU3Ek__BackingField_1)); }
-	inline bool get_U3CEnabledU3Ek__BackingField_1() const { return ___U3CEnabledU3Ek__BackingField_1; }
-	inline bool* get_address_of_U3CEnabledU3Ek__BackingField_1() { return &___U3CEnabledU3Ek__BackingField_1; }
-	inline void set_U3CEnabledU3Ek__BackingField_1(bool value)
+	inline static int32_t get_offset_of_U3CStubReturnStatementU3Ek__BackingField_1() { return static_cast<int32_t>(offsetof(NativeConditionalAttribute_t659349956F06958D4D05443BD06FF5CDC767C88B, ___U3CStubReturnStatementU3Ek__BackingField_1)); }
+	inline String_t* get_U3CStubReturnStatementU3Ek__BackingField_1() const { return ___U3CStubReturnStatementU3Ek__BackingField_1; }
+	inline String_t** get_address_of_U3CStubReturnStatementU3Ek__BackingField_1() { return &___U3CStubReturnStatementU3Ek__BackingField_1; }
+	inline void set_U3CStubReturnStatementU3Ek__BackingField_1(String_t* value)
 	{
-		___U3CEnabledU3Ek__BackingField_1 = value;
+		___U3CStubReturnStatementU3Ek__BackingField_1 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___U3CStubReturnStatementU3Ek__BackingField_1), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_U3CEnabledU3Ek__BackingField_2() { return static_cast<int32_t>(offsetof(NativeConditionalAttribute_t659349956F06958D4D05443BD06FF5CDC767C88B, ___U3CEnabledU3Ek__BackingField_2)); }
+	inline bool get_U3CEnabledU3Ek__BackingField_2() const { return ___U3CEnabledU3Ek__BackingField_2; }
+	inline bool* get_address_of_U3CEnabledU3Ek__BackingField_2() { return &___U3CEnabledU3Ek__BackingField_2; }
+	inline void set_U3CEnabledU3Ek__BackingField_2(bool value)
+	{
+		___U3CEnabledU3Ek__BackingField_2 = value;
 	}
 };
 
