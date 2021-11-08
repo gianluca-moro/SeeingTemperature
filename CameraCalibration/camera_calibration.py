@@ -32,9 +32,10 @@ def match_SIFT_features(image,template):
             good.append([m])
 
     print("Number of good matches:", len(good))
-    #print("Draw matches")
-    #img3 = cv2.drawMatchesKnn(image, kp1, template, kp2, good, None, flags=2)
-    #return img3
+    print("Draw matches")
+    mapped_features = cv2.drawMatchesKnn(image, kp1, template, kp2, good, None, flags=2)
+    show_img(mapped_features, "Mapped Features")
+    cv2.imwrite("mapped_features.png", mapped_features)
 
     obj = np.empty((len(good),2), dtype=np.float32)
     scene = np.empty((len(good),2), dtype=np.float32)
@@ -46,22 +47,51 @@ def match_SIFT_features(image,template):
         scene[i,1] = kp2[good[i][0].trainIdx].pt[1]
 
     print("Find Homography matrix")
-    H, _ =  cv2.findHomography(obj, scene, cv2.RANSAC)
-
-    print("Warp image")
-    result = cv2.warpPerspective(image, H, (template.shape[1], template.shape[0]))
+    # could also use LMEDS instead of RANSAC but has pretty much the same result
+    H, mask = cv2.findHomography(obj, scene, cv2.RANSAC)
+    num_inliers = 0
+    for m in mask:
+        if m[0] == 1:
+            num_inliers += 1
+    print(f"Number of inliers: {num_inliers}\nPercentage of inliers: {round(num_inliers / len(good), 3)}")
+    print("Homography matrix:\n", H)
 
     '''
         Homography Matrix with current calibration images (hand on black background, 06.11.21):
-        [[ 4.13230472e-01 -8.58864495e-02 -1.19166692e+02]
-         [ 1.20177305e-01  3.07665391e-01  8.21631527e+01]
-         [ 3.07460187e-04 -2.71324057e-04  1.00000000e+00]]
+        [[ 3.79075484e-01  2.25398197e-02 -1.63771395e+02]
+         [ 1.87228835e-02  3.81508022e-01  1.35464831e+02] 
+         [ 8.34340845e-05  4.79688716e-05  1.00000000e+00]]
     '''
-    return result, H
+    return H
+
+
+def warp_image(img, H, size):
+    print("Warp image")
+    warped_image = cv2.warpPerspective(img, H, size)
+    show_img(warped_image, "Warped Image")
+    cv2.imwrite("warped_image.png", warped_image)
+    return warped_image
+
+
+def side_by_side(original_img, warped_img):
+    '''Show original image next to warped image'''
+    side_by_side = np.hstack((original_img, warped_img))
+    show_img(side_by_side, "Side by side")
+    cv2.imwrite("side_by_side.png", side_by_side)
+
+
+def show_img(img, name="Image"):
+    cv2.imshow(name, img)
+    # keep window open until closed (ESC or X button)
+    while True:
+        key = cv2.waitKey(250)
+        if key == 27 or cv2.getWindowProperty(name, cv2.WND_PROP_VISIBLE) < 1:
+            cv2.destroyAllWindows()
+            break
 
 
 # returns pixel coordinates in original-size (160x120) and unrotated thermal image
-# IMPORTANT: Provided pixels coordinates (x,y) correspond to original size hololens image
+# IMPORTANT: Provided pixels coordinates (x,y) correspond to original size hololens image (2196x3904)
 def warp_pixel(x, y, H, downscale_factor=1.0, upscale_factor=1.0):
     '''
     In theory:
@@ -83,8 +113,7 @@ def warp_pixel(x, y, H, downscale_factor=1.0, upscale_factor=1.0):
         but it's not much, maybe 1cm in real life, so it should still be fine)
         Maybe with a different set of calibration images it might work better
     '''
-    print("Homography matrix:\n", H)
-    print(f"Hololens image pixel coordinates: ({x}, {y})")
+    print(f"\n\nHololens image pixel coordinates: ({x}, {y})")
     x = int(x / downscale_factor)
     y = int(y / downscale_factor)
     hololens_img_pixel = np.array([[x], [y], [1]])
@@ -112,32 +141,31 @@ def main():
     #   upscale thermal image and downscale hololens image
     # TODO: maybe try different rescale factors?
     hololens_img = cv2.resize(hololens_img, (1920, 1080), interpolation = cv2.INTER_AREA)
+    unblurred_hololens_img = hololens_img
     thermal_img = cv2.resize(thermal_img, (369, 492), interpolation = cv2.INTER_AREA)
     
     # Apply blurring
-    hololens_img = cv2.GaussianBlur(hololens_img, (99,99), cv2.BORDER_DEFAULT)
-    thermal_img = cv2.GaussianBlur(thermal_img, (9,9), cv2.BORDER_DEFAULT)
+    #   Note: without blurring, the result is a bit better
+    #hololens_img = cv2.GaussianBlur(hololens_img, (99,99), cv2.BORDER_DEFAULT)
+    #thermal_img = cv2.GaussianBlur(thermal_img, (9,9), cv2.BORDER_DEFAULT)
 
     # Create grayscale images
     hololens_img = cv2.cvtColor(hololens_img, cv2.COLOR_BGR2GRAY)
     thermal_img = cv2.cvtColor(thermal_img, cv2.COLOR_BGR2GRAY)
+    unblurred_hololens_img = cv2.cvtColor(unblurred_hololens_img, cv2.COLOR_BGR2GRAY)
 
-    output, H = match_SIFT_features(hololens_img, thermal_img)
-    cv2.imshow("Output", output)
 
-    #show = np.vstack((hololens_img, output))
-    #cv2.imshow("Output", show)
+    H = match_SIFT_features(hololens_img, thermal_img)
+    warped_img = warp_image(hololens_img, H, (thermal_img.shape[1], thermal_img.shape[0]))
+    side_by_side(thermal_img, warped_img)
 
-    # keep window open until closed (ESC or X button)
-    while True:
-        key = cv2.waitKey(250)
-        if key == 27 or cv2.getWindowProperty("Output", cv2.WND_PROP_VISIBLE) < 1:
-            cv2.destroyAllWindows()
-            break
 
     hololens_img_downscale_factor = hololens_img_orig_size[0] / hololens_img.shape[0]
     thermal_img_upscale_factor = thermal_img.shape[0] / 160
-    x,y = warp_pixel(1720, 795, H, hololens_img_downscale_factor, thermal_img_upscale_factor)
+    x,y = warp_pixel(1919, 383, H, hololens_img_downscale_factor, thermal_img_upscale_factor)   # Fingernail of small finger
+    x,y = warp_pixel(2284, 1542, H, hololens_img_downscale_factor, thermal_img_upscale_factor)  # Fingernail of thumb
+    x,y = warp_pixel(2540, 626, H, hololens_img_downscale_factor, thermal_img_upscale_factor)   # Fingernail of middle finger
+    x,y = warp_pixel(1590, 1144, H, hololens_img_downscale_factor, thermal_img_upscale_factor)  # Middle of hand
 
 
 if __name__ == "__main__":
