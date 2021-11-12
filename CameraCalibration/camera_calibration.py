@@ -58,9 +58,9 @@ def match_SIFT_features(image,template):
 
     '''
         Homography Matrix with current calibration images (hand on black background, 06.11.21):
-        [[ 3.79075484e-01  2.25398197e-02 -1.63771395e+02]
-         [ 1.87228835e-02  3.81508022e-01  1.35464831e+02] 
-         [ 8.34340845e-05  4.79688716e-05  1.00000000e+00]]
+        [[ 3.7907548397926333e-01  2.2539819663811609e-02 -1.6377139502293127e+02]
+         [ 1.8722883539177355e-02  3.8150802183948879e-01  1.3546483061885007e+02]
+         [ 8.3434084498385530e-05  4.7968871606718406e-05  1.0000000000000000e+00]]
     '''
     return H
 
@@ -132,6 +132,7 @@ def warp_pixel(x, y, H, downscale_factor=1.0, upscale_factor=1.0):
 
 def main():
     print("Reading images")
+    np.set_printoptions(precision=16)
     hololens_img = cv2.imread("Capture.jpg")
     hololens_img_orig_size = hololens_img.shape
     # rotate thermal image so both images are oriented the same way for better result
@@ -161,7 +162,7 @@ def main():
 
 
     hololens_img_downscale_factor = hololens_img_orig_size[0] / hololens_img.shape[0]
-    thermal_img_upscale_factor = thermal_img.shape[0] / 160
+    thermal_img_upscale_factor = thermal_img.shape[1] / 120
     x,y = warp_pixel(1919, 383, H, hololens_img_downscale_factor, thermal_img_upscale_factor)   # Fingernail of small finger
     x,y = warp_pixel(2284, 1542, H, hololens_img_downscale_factor, thermal_img_upscale_factor)  # Fingernail of thumb
     x,y = warp_pixel(2540, 626, H, hololens_img_downscale_factor, thermal_img_upscale_factor)   # Fingernail of middle finger
