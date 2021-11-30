@@ -7,19 +7,29 @@ using System.Threading;
 
 public class Logic : MonoBehaviour
 {
-    public GameObject visualizer;
-    public TMP_Text text;
+    public GameObject thermometer;
+    public GameObject thermalImage;
+    public GameObject thermalDetector;
     public TextMesh textMesh;
-    public float temperature = 36;
+    public float temperature = 30;
     public Material normal;
     public Material cold;
     public Material fever;
     public Material highFever;
+    public MyPhotoCapture photos;
 
     private LeptonTcpClient.TcpClient client = null;
     private bool isRunning = false;
     private bool recivedTemp = false;
     private Thread t;
+
+    /*
+     * Deafult: mode = 0;
+     * mode = 0: Normale Temperatur lesen mit Fadenkreuz
+     * mode = 1: Thermal image
+     * mode = 2: Thermal detector
+     */
+    private int mode = 0;
 
     void Start()
     {
@@ -50,28 +60,32 @@ public class Logic : MonoBehaviour
     {
         if (recivedTemp)
         {
-            Material currentMaterial = normal;
-            if (temperature < 36.5)
+            if (mode == 1 && textMesh != null)
             {
-                currentMaterial = cold;
-            }
-            else if (temperature > 38.5)
-            {
-                if (temperature <= 39)
-                {
-                    currentMaterial = fever;
-                }
-                else
-                {
-                    currentMaterial = highFever;
-                }
-            }
-            visualizer.GetComponent<Renderer>().material = currentMaterial;
-            if(text != null)
-                text.text = temperature.ToString() + "C°";
-            if(textMesh != null)
                 textMesh.text = temperature.ToString() + "C°";
+            }
+
             recivedTemp = false;
+        }
+    }
+
+    private void chooseMaterial()
+    {
+        Material currentMaterial = normal;
+        if (temperature < 36.5)
+        {
+            currentMaterial = cold;
+        }
+        else if (temperature > 38.5)
+        {
+            if (temperature <= 39)
+            {
+                currentMaterial = fever;
+            }
+            else
+            {
+                currentMaterial = highFever;
+            }
         }
     }
 
@@ -91,6 +105,33 @@ public class Logic : MonoBehaviour
                 }
             }
             catch (Exception) { }
+        }
+    }
+
+    public void ChangeMode(int mode)
+    {
+        this.mode = mode;
+        thermometer.SetActive(false);
+        thermalImage.SetActive(false);
+        thermalDetector.SetActive(false);
+        switch (mode)
+        {
+            case 0:
+                thermometer.SetActive(true);
+                photos.deactivateCanvas();
+                break;
+            case 1:
+                thermalImage.SetActive(true);
+                photos.takePhoto();
+                break;
+            case 2:
+                photos.deactivateCanvas();
+                thermalDetector.SetActive(true);
+                break;
+            default:
+                photos.deactivateCanvas();
+                thermometer.SetActive(true);
+                break;
         }
     }
 

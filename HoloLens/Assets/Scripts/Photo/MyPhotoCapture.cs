@@ -38,6 +38,10 @@ public class MyPhotoCapture : MonoBehaviour
         {
             m_CapturingPhoto = true;
             Debug.Log("Taking picture...");
+            if(m_Canvas != null)
+            {
+                m_Canvas.SetActive(true);
+            }
             if (SavePhotoToDisk)
             {
 
@@ -59,7 +63,8 @@ public class MyPhotoCapture : MonoBehaviour
     {
         photoCaptureObject = captureObject;
 
-        Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
+        //Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
+        Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).Last();
 
         CameraParameters c = new CameraParameters();
         c.hologramOpacity = 0.0f;
@@ -100,7 +105,8 @@ public class MyPhotoCapture : MonoBehaviour
         if (result.success)
         {
             // Create our Texture2D for use and set the correct resolution
-            Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
+            //Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
+            Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).Last();
             Texture2D targetTexture = new Texture2D(cameraResolution.width, cameraResolution.height);
             // Copy the raw image data into our target texture
             photoCaptureFrame.UploadImageDataToTexture(targetTexture);
@@ -169,5 +175,13 @@ public class MyPhotoCapture : MonoBehaviour
     {
         photoCaptureObject.Dispose();
         photoCaptureObject = null;
+    }
+
+    public void deactivateCanvas()
+    {
+        if (m_Canvas != null)
+        {
+            m_Canvas.SetActive(false);
+        }
     }
 }
