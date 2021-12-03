@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using TMPro;
 using System.Threading;
+using CameraCalibration
 
 public class Logic : MonoBehaviour
 {
@@ -46,12 +47,12 @@ public class Logic : MonoBehaviour
         }
     }
     /* Wikipedia:
-     * 36,3 bis 37,4 °C 	Normaltemperatur (afebril)
-     * 37,5 bis 38,0 °C 	erhöhte Temperatur (subfebril)
-     * 38,1 bis 38,5 °C 	leichtes Fieber (febril)
-     * 38,6 bis 39,0 °C 	Fieber
-     * 39,1 bis 39,9 °C 	hohes Fieber
-     * 40 bis 42 °C 	    sehr hohes Fieber (hyperpyretisches Fieber), Krämpfe 
+     * 36,3 bis 37,4 ï¿½C 	Normaltemperatur (afebril)
+     * 37,5 bis 38,0 ï¿½C 	erhï¿½hte Temperatur (subfebril)
+     * 38,1 bis 38,5 ï¿½C 	leichtes Fieber (febril)
+     * 38,6 bis 39,0 ï¿½C 	Fieber
+     * 39,1 bis 39,9 ï¿½C 	hohes Fieber
+     * 40 bis 42 ï¿½C 	    sehr hohes Fieber (hyperpyretisches Fieber), Krï¿½mpfe 
      * 
      */
 
@@ -62,7 +63,7 @@ public class Logic : MonoBehaviour
         {
             if (mode == 1 && textMesh != null)
             {
-                textMesh.text = temperature.ToString() + "C°";
+                textMesh.text = temperature.ToString() + "Cï¿½";
             }
 
             recivedTemp = false;
@@ -100,7 +101,8 @@ public class Logic : MonoBehaviour
 
                 if (data != null && data.Temperatures != null)
                 {
-                    temperature = data.Temperatures[60][80];
+                    x,y = MapPixel(0,0)
+                    temperature = data.Temperatures[x][y];
                     recivedTemp = true;
                 }
             }
