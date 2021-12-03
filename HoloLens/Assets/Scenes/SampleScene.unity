@@ -296,7 +296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &438489655
 RectTransform:
   m_ObjectHideFlags: 0
@@ -778,7 +778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &607710605
 Transform:
   m_ObjectHideFlags: 0
@@ -1110,6 +1110,7 @@ MonoBehaviour:
   fever: {fileID: 2100000, guid: 7cbc2b30af41b8a4ebd94ef27bfaae2c, type: 2}
   highFever: {fileID: 2100000, guid: 3372c44704ec9684d8ad6ce3e2409e1d, type: 2}
   photos: {fileID: 1671379584}
+  offset: 2
 --- !u!4 &1105539211
 Transform:
   m_ObjectHideFlags: 0
@@ -1220,7 +1221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1595538846
 Transform:
   m_ObjectHideFlags: 0

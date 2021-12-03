@@ -168,7 +168,7 @@ static const int32_t s_InvokerIndices[47] =
 	5260,
 	5260,
 	5527,
-	7587,
+	7589,
 	5210,
 	5172,
 	5172,
@@ -195,7 +195,7 @@ static const int32_t s_InvokerIndices[47] =
 	4282,
 	4319,
 	5260,
-	7587,
+	7589,
 };
 extern const CustomAttributesCacheGenerator g_Microsoft_MixedReality_Toolkit_Extensions_HandPhysics_AttributeGenerators[];
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_Microsoft_MixedReality_Toolkit_Extensions_HandPhysics_CodeGenModule;

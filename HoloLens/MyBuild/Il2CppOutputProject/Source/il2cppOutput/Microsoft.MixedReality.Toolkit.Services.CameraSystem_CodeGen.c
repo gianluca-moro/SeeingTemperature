@@ -88,7 +88,7 @@ static const int32_t s_InvokerIndices[18] =
 	5260,
 	1926,
 	3078,
-	7587,
+	7589,
 };
 extern const CustomAttributesCacheGenerator g_Microsoft_MixedReality_Toolkit_Services_CameraSystem_AttributeGenerators[];
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_Microsoft_MixedReality_Toolkit_Services_CameraSystem_CodeGenModule;

@@ -630,6 +630,20 @@
             "usedInScenes": []
         },
         {
+            "managedAssemblyName": "Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.dll",
+            "nativeClass": "",
+            "fullManagedTypeName": "Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.HandPhysicsServiceProfile",
+            "moduleName": "",
+            "usedInScenes": []
+        },
+        {
+            "managedAssemblyName": "Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.dll",
+            "nativeClass": "",
+            "fullManagedTypeName": "Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.JointKinematicBody",
+            "moduleName": "",
+            "usedInScenes": []
+        },
+        {
             "managedAssemblyName": "Microsoft.MixedReality.Toolkit.Providers.OpenXR.dll",
             "nativeClass": "",
             "fullManagedTypeName": "Microsoft.MixedReality.Toolkit.XRSDK.OpenXR.OpenXRCameraSettingsProfile",
@@ -941,6 +955,13 @@
             "managedAssemblyName": "Microsoft.MixedReality.Toolkit.dll",
             "nativeClass": "",
             "fullManagedTypeName": "Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerVisualizationProfile",
+            "moduleName": "",
+            "usedInScenes": []
+        },
+        {
+            "managedAssemblyName": "Microsoft.MixedReality.Toolkit.dll",
+            "nativeClass": "",
+            "fullManagedTypeName": "Microsoft.MixedReality.Toolkit.Input.MixedRealityEyeTrackingProfile",
             "moduleName": "",
             "usedInScenes": []
         },

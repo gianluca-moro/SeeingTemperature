@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using TMPro;
 using System.Threading;
-using CameraCalibration
+using CameraCalibration;
 
 public class Logic : MonoBehaviour
 {
@@ -18,6 +18,8 @@ public class Logic : MonoBehaviour
     public Material fever;
     public Material highFever;
     public MyPhotoCapture photos;
+
+    public float offset = 2.0f;
 
     private LeptonTcpClient.TcpClient client = null;
     private bool isRunning = false;
@@ -61,11 +63,10 @@ public class Logic : MonoBehaviour
     {
         if (recivedTemp)
         {
-            if (mode == 1 && textMesh != null)
+            if (mode == 0 && textMesh != null)
             {
-                textMesh.text = temperature.ToString() + "C�";
+                textMesh.text = temperature.ToString() + "C°";
             }
-
             recivedTemp = false;
         }
     }
@@ -101,12 +102,18 @@ public class Logic : MonoBehaviour
 
                 if (data != null && data.Temperatures != null)
                 {
-                    x,y = MapPixel(3904/2,2196/2);
-                    temperature = data.Temperatures[x][y]+2.0;
+                    int [] a = CameraCalibration.CameraCalibration.MapPixel(3904/2,2196/2);
+                    int i = a[0];
+                    int j = a[1];
+                    if(0 <= i && i <= 160 && 0 <= j && j <= 120)
+                        temperature = data.Temperatures[i][j] + offset;
+                    else
+                        temperature = -(data.Temperatures[80][60] + offset);
                     recivedTemp = true;
                 }
             }
             catch (Exception) { }
+            Thread.Sleep(200);
         }
     }
 

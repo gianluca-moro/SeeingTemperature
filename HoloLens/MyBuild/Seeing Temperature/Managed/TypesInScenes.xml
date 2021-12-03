@@ -67,6 +67,10 @@
 		<type fullname="Microsoft.MixedReality.OpenXR.Remoting.AppRemotingPlugin" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.OpenXR.Remoting.PlayModeRemotingPlugin" preserve="nothing"/>
 	</assembly>
+	<assembly fullname="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics">
+		<type fullname="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.HandPhysicsServiceProfile" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.JointKinematicBody" preserve="nothing"/>
+	</assembly>
 	<assembly fullname="Microsoft.MixedReality.Toolkit.Providers.OpenXR">
 		<type fullname="Microsoft.MixedReality.Toolkit.XRSDK.OpenXR.OpenXRCameraSettingsProfile" preserve="nothing"/>
 	</assembly>
@@ -125,6 +129,7 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.BaseHandVisualizer" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerMappingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerVisualizationProfile" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityEyeTrackingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityGesturesProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityHandTrackingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityInputActionRulesProfile" preserve="nothing"/>
