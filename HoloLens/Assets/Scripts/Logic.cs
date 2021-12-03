@@ -101,8 +101,8 @@ public class Logic : MonoBehaviour
 
                 if (data != null && data.Temperatures != null)
                 {
-                    x,y = MapPixel(0,0)
-                    temperature = data.Temperatures[x][y];
+                    x,y = MapPixel(3904/2,2196/2);
+                    temperature = data.Temperatures[x][y]+2.0;
                     recivedTemp = true;
                 }
             }
