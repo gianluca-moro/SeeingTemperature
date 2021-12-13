@@ -34,16 +34,21 @@ public class Logic : MonoBehaviour
      */
     private int mode = 0;
 
+
+    public FaceTracking faceTracking;
+
     void Start()
     {
         //LeptonTcpClient.TcpClient.GetMultipleFrames(20);
         client = new LeptonTcpClient.TcpClient();
-        if(client.Setup() == 0)
+        faceTracking = new FaceTracking();
+        if (client.Setup() == 0)
         {
             isRunning = true;
             t = new Thread(DataProcessing);
             t.Start();
-        } else
+        }
+        else
         {
             Debug.Log("Connection with Server not established (Logic.cs)");
         }
@@ -102,10 +107,10 @@ public class Logic : MonoBehaviour
 
                 if (data != null && data.Temperatures != null)
                 {
-                    int [] a = CameraCalibration.CameraCalibration.MapPixel(3904/2,2196/2);
+                    int[] a = CameraCalibration.CameraCalibration.MapPixel(3904 / 2, 2196 / 2);
                     int i = a[0];
                     int j = a[1];
-                    if(0 <= i && i <= 160 && 0 <= j && j <= 120)
+                    if (0 <= i && i <= 160 && 0 <= j && j <= 120)
                         temperature = data.Temperatures[i][j] + offset;
                     else
                         temperature = -(data.Temperatures[80][60] + offset);
@@ -127,17 +132,21 @@ public class Logic : MonoBehaviour
         {
             case 0:
                 thermometer.SetActive(true);
+                //faceTracking.StopFaceTrack();
                 photos.deactivateCanvas();
                 break;
             case 1:
+                //faceTracking.StopFaceTrack();
                 thermalImage.SetActive(true);
                 photos.takePhoto();
                 break;
             case 2:
                 photos.deactivateCanvas();
                 thermalDetector.SetActive(true);
+                //faceTracking.StartFaceTrack(thermalDetector);
                 break;
             default:
+                //faceTracking.StopFaceTrack();
                 photos.deactivateCanvas();
                 thermometer.SetActive(true);
                 break;
@@ -146,7 +155,7 @@ public class Logic : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        if(client != null)
+        if (client != null)
         {
             isRunning = false;
             client.Cleanup();
