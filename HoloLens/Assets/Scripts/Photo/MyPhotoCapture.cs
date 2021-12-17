@@ -19,10 +19,16 @@ public class MyPhotoCapture : MonoBehaviour
     private PhotoCapture photoCaptureObject = null;
     private bool SavePhotoToDisk = false;
     private bool m_CapturingPhoto = true;
+    private float[][] data;
 
     // Start is called before the first frame update
     void Start()
     {
+        #if UNITY_EDITOR
+                Debug.unityLogger.logEnabled = true;
+        #else
+                Debug.unityLogger.logEnabled = false;
+        #endif
         PhotoCapture.CreateAsync(false, OnPhotoCaptureCreated);
     }
 
@@ -32,12 +38,13 @@ public class MyPhotoCapture : MonoBehaviour
         
     }
 
-    public void takePhoto()
+    public void takePhoto(float[][] dta)
     {
         if (!m_CapturingPhoto)
         {
             m_CapturingPhoto = true;
             Debug.Log("Taking picture...");
+            data = dta;
             if(m_Canvas != null)
             {
                 m_Canvas.SetActive(true);
@@ -107,9 +114,38 @@ public class MyPhotoCapture : MonoBehaviour
             // Create our Texture2D for use and set the correct resolution
             //Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
             Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).Last();
-            Texture2D targetTexture = new Texture2D(cameraResolution.width, cameraResolution.height);
+            Texture2D photo_targetTexture = new Texture2D(cameraResolution.width, cameraResolution.height);
             // Copy the raw image data into our target texture
-            photoCaptureFrame.UploadImageDataToTexture(targetTexture);
+            photoCaptureFrame.UploadImageDataToTexture(photo_targetTexture);
+
+            Texture2D targetTexture = new Texture2D(data[0].Length, data.Length);
+
+            float min = data[0][0];
+            float max = data[0][0];
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data[0].Length; j++)
+                {
+                    if (min > data[i][j])
+                    {
+                        min = data[i][j];
+                    }
+                    if (max < data[i][j])
+                    {
+                        max = data[i][j];
+                    }
+                }
+            }
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data[0].Length; j++)
+                {
+                    targetTexture.SetPixel(j, i, Color.Lerp(Color.blue, Color.red, (data[i][j] - min) / (max - min)));
+                }
+            }
+            targetTexture.Apply();
 
             // To get the location of the picture in the world
             if (photoCaptureFrame.hasLocationData)
@@ -120,6 +156,7 @@ public class MyPhotoCapture : MonoBehaviour
                     m_Canvas.name = "PhotoCaptureCanvas";
                     m_CanvasRenderer = m_Canvas.GetComponent<Renderer>() as Renderer;
                     m_CanvasRenderer.material = new Material(Shader.Find("AR/HolographicImageBlend"));
+                    m_Canvas.transform.localScale = new Vector3(2.5f, 2.5f, 1);
                 }
 
                 photoCaptureFrame.TryGetCameraToWorldMatrix(out Matrix4x4 cameraToWorldMatrix);
@@ -129,6 +166,7 @@ public class MyPhotoCapture : MonoBehaviour
                 Quaternion rotation = Quaternion.LookRotation(-cameraToWorldMatrix.GetColumn(2), cameraToWorldMatrix.GetColumn(1));
 
                 photoCaptureFrame.TryGetProjectionMatrix(Camera.main.nearClipPlane, Camera.main.farClipPlane, out Matrix4x4 projectionMatrix);
+                photo_targetTexture.wrapMode = TextureWrapMode.Clamp;
                 targetTexture.wrapMode = TextureWrapMode.Clamp;
 
                 // Setup for the Shader

@@ -21,6 +21,11 @@ namespace LeptonTcpClient
 
         public int Setup()
         {
+            #if UNITY_EDITOR
+                        Debug.unityLogger.logEnabled = true;
+            #else
+                Debug.unityLogger.logEnabled = false;
+            #endif
             int ret = -1;
             // Connect to a remote device.  
             try

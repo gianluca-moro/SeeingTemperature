@@ -25,6 +25,9 @@ public class Logic : MonoBehaviour
     private bool isRunning = false;
     private bool recivedTemp = false;
     private Thread t;
+    private float[][] data;
+    // private ThermalData thermal_visualizer;
+
 
     /*
      * Deafult: mode = 0;
@@ -36,8 +39,15 @@ public class Logic : MonoBehaviour
 
     void Start()
     {
+        #if UNITY_EDITOR
+            Debug.unityLogger.logEnabled = true;
+#else
+            Debug.unityLogger.logEnabled = false;
+#endif
         //LeptonTcpClient.TcpClient.GetMultipleFrames(20);
+        data = GetDummyData();
         client = new LeptonTcpClient.TcpClient();
+        // thermal_visualizer = new ThermalData();
         if(client.Setup() == 0)
         {
             isRunning = true;
@@ -98,23 +108,38 @@ public class Logic : MonoBehaviour
         {
             try
             {
-                LeptonTcpClient.ThermalData data = client.GetSingleFrame();
+                data = client.GetSingleFrame().Temperatures;
 
-                if (data != null && data.Temperatures != null)
+                if (data != null)
                 {
+                    data = Transpose(data);
                     int [] a = CameraCalibration.CameraCalibration.MapPixel(3904/2,2196/2);
                     int i = a[0];
                     int j = a[1];
                     if(0 <= i && i <= 160 && 0 <= j && j <= 120)
-                        temperature = data.Temperatures[i][j] + offset;
+                        temperature = data[i][j] + offset;
                     else
-                        temperature = -(data.Temperatures[80][60] + offset);
+                        temperature = -(data[80][60] + offset);
                     recivedTemp = true;
                 }
             }
             catch (Exception) { }
             Thread.Sleep(200);
         }
+    }
+
+    public float[][] Transpose(float[][] data)
+    {
+        float[][] ret = new float[data[0].Length][];
+        for (int i = 0; i < data[0].Length; i++)
+        {
+            ret[i] = new float[data.Length];
+            for (int j = 0; j < data.Length; j++)
+            {
+                ret[i][j] = data[j][i];
+            }
+        }
+        return ret;
     }
 
     public void ChangeMode(int mode)
@@ -130,8 +155,9 @@ public class Logic : MonoBehaviour
                 photos.deactivateCanvas();
                 break;
             case 1:
+                photos.takePhoto(data);
+                // thermal_visualizer.Render(data);
                 thermalImage.SetActive(true);
-                photos.takePhoto();
                 break;
             case 2:
                 photos.deactivateCanvas();
@@ -144,7 +170,22 @@ public class Logic : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+    public float[][] GetDummyData()
+    {
+        System.Random rnd = new System.Random();
+        float[][] ret = new float[128][];
+        for(int i = 0; i < ret.Length; i++)
+        {
+            ret[i] = new float[169];
+            for(int j = 0; j < ret[i].Length; j++)
+            {
+                ret[i][j] = 15 + rnd.Next(15);
+            }
+        }
+        return ret;
+    }
+
+private void OnApplicationQuit()
     {
         if(client != null)
         {

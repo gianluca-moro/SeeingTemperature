@@ -32,6 +32,7 @@
 		<type fullname="UnityEngine.AudioBehaviour" preserve="nothing"/>
 		<type fullname="UnityEngine.AudioListener" preserve="nothing"/>
 		<type fullname="UnityEngine.Collider" preserve="nothing"/>
+		<type fullname="UnityEngine.MeshCollider" preserve="nothing"/>
 		<type fullname="UnityEngine.BoxCollider" preserve="nothing"/>
 		<type fullname="UnityEngine.TextMesh" preserve="nothing"/>
 		<type fullname="UnityEngine.Canvas" preserve="nothing"/>
@@ -58,6 +59,7 @@
 		<type fullname="Follow" preserve="nothing"/>
 		<type fullname="Logic" preserve="nothing"/>
 		<type fullname="MyPhotoCapture" preserve="nothing"/>
+		<type fullname="RednerTest" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Microsoft.MixedReality.OpenXR">
 		<type fullname="Microsoft.MixedReality.OpenXR.HPMixedRealityControllerProfile" preserve="nothing"/>
@@ -66,10 +68,6 @@
 		<type fullname="Microsoft.MixedReality.OpenXR.MotionControllerFeaturePlugin" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.OpenXR.Remoting.AppRemotingPlugin" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.OpenXR.Remoting.PlayModeRemotingPlugin" preserve="nothing"/>
-	</assembly>
-	<assembly fullname="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics">
-		<type fullname="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.HandPhysicsServiceProfile" preserve="nothing"/>
-		<type fullname="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.JointKinematicBody" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Microsoft.MixedReality.Toolkit.Providers.OpenXR">
 		<type fullname="Microsoft.MixedReality.Toolkit.XRSDK.OpenXR.OpenXRCameraSettingsProfile" preserve="nothing"/>
@@ -129,7 +127,6 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.BaseHandVisualizer" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerMappingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerVisualizationProfile" preserve="nothing"/>
-		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityEyeTrackingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityGesturesProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityHandTrackingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityInputActionRulesProfile" preserve="nothing"/>

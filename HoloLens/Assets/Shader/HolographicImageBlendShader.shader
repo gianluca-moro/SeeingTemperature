@@ -76,7 +76,7 @@ Shader "AR/HolographicImageBlend"
 
                     // Finally add a circular vignette effect starting from the center
                     // of the image.
-                    finalColor *= 1.0 - (length(signedUV) * _VignetteScale);
+                    // finalColor *= 1.0 - (length(signedUV) * _VignetteScale);
 
                     return finalColor;
                 }

@@ -13,9 +13,9 @@
 
 
 // 0x00000001 System.Void Windows.Foundation.AsyncActionCompletedHandler::.ctor(System.Object,System.IntPtr)
-extern void AsyncActionCompletedHandler__ctor_m8174AC23FE63E72DDA50BF9060B8EA33D3CC2FC6 (void);
+extern void AsyncActionCompletedHandler__ctor_mFB087F426B85A21CFD3EC42705296735802E4C6E (void);
 // 0x00000002 System.Void Windows.Foundation.AsyncActionCompletedHandler::Invoke(Windows.Foundation.IAsyncAction,Windows.Foundation.AsyncStatus)
-extern void AsyncActionCompletedHandler_Invoke_m9E54CBC26496783FCB9C5EF40E4B947F2C0E0EC6 (void);
+extern void AsyncActionCompletedHandler_Invoke_m351D4D540D59485AB4607AD62FDB182A704C4239 (void);
 // 0x00000003 System.Void Windows.Foundation.AsyncOperationCompletedHandler`1::.ctor(System.Object,System.IntPtr)
 // 0x00000004 System.Void Windows.Foundation.AsyncOperationCompletedHandler`1::Invoke(Windows.Foundation.IAsyncOperation`1<TResult>,Windows.Foundation.AsyncStatus)
 // 0x00000005 System.Void Windows.Foundation.AsyncOperationProgressHandler`2::.ctor(System.Object,System.IntPtr)
@@ -59,21 +59,21 @@ extern void AsyncActionCompletedHandler_Invoke_m9E54CBC26496783FCB9C5EF40E4B947F
 // 0x0000002B System.Void Windows.Foundation.EventHandler`1::.ctor(System.Object,System.IntPtr)
 // 0x0000002C System.Void Windows.Foundation.EventHandler`1::Invoke(System.Object,T)
 // 0x0000002D System.Void Windows.Foundation.IAsyncAction::put_Completed(Windows.Foundation.AsyncActionCompletedHandler)
-extern void IAsyncAction_put_Completed_m153FFA20288B2A12135D5E31F5E321CB7C7C32A4 (void);
+extern void IAsyncAction_put_Completed_mE1223109A7CBD5DA29413156BA2C75157F169C87 (void);
 // 0x0000002E Windows.Foundation.AsyncActionCompletedHandler Windows.Foundation.IAsyncAction::get_Completed()
 extern void IAsyncAction_get_Completed_mEEA8DB3EB0D4FE9F33A54B6A16D65902B70DCB39 (void);
 // 0x0000002F System.Void Windows.Foundation.IAsyncAction::GetResults()
 extern void IAsyncAction_GetResults_mD06D8F02D7793FED272208F851EF8A2D9B25FE38 (void);
 // 0x00000030 System.UInt32 Windows.Foundation.IAsyncInfo::get_Id()
-extern void IAsyncInfo_get_Id_m3863CB02C1CDBA1050DAAE7311DF9F3E8BCD9D74 (void);
+extern void IAsyncInfo_get_Id_m66B4DB488CAE8CD259581D1CCAB94FBFA05BC733 (void);
 // 0x00000031 Windows.Foundation.AsyncStatus Windows.Foundation.IAsyncInfo::get_Status()
-extern void IAsyncInfo_get_Status_m7E8AA78C1877123B35EAFA58FEF0FA86D8A97583 (void);
+extern void IAsyncInfo_get_Status_m9393658D0FD28BE7960FBB531A31A1E1CB106F80 (void);
 // 0x00000032 System.Exception Windows.Foundation.IAsyncInfo::get_ErrorCode()
-extern void IAsyncInfo_get_ErrorCode_m37ACAD97746ABA13006C88EDF582C3B73B68D806 (void);
+extern void IAsyncInfo_get_ErrorCode_m0C4F0079B788C88A5A572A827AAACA0B3BB233C5 (void);
 // 0x00000033 System.Void Windows.Foundation.IAsyncInfo::Cancel()
-extern void IAsyncInfo_Cancel_m53FE58D39AE61799A01EE7ECB9429CB3EE01EEFE (void);
+extern void IAsyncInfo_Cancel_m55A00D21BF943DA94D606044A66295FEF77139EE (void);
 // 0x00000034 System.Void Windows.Foundation.IAsyncInfo::Close()
-extern void IAsyncInfo_Close_mD8F3D2C7103B340A9FF16F58333E33643F552635 (void);
+extern void IAsyncInfo_Close_m186908B02D6E9850DB3376510E0C3FB99B891FBB (void);
 // 0x00000035 System.Void Windows.Foundation.IAsyncOperationWithProgress`2::put_Progress(Windows.Foundation.AsyncOperationProgressHandler`2<TResult,TProgress>)
 // 0x00000036 Windows.Foundation.AsyncOperationProgressHandler`2<TResult,TProgress> Windows.Foundation.IAsyncOperationWithProgress`2::get_Progress()
 // 0x00000037 System.Void Windows.Foundation.IAsyncOperationWithProgress`2::put_Completed(Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2<TResult,TProgress>)
@@ -83,7 +83,7 @@ extern void IAsyncInfo_Close_mD8F3D2C7103B340A9FF16F58333E33643F552635 (void);
 // 0x0000003B Windows.Foundation.AsyncOperationCompletedHandler`1<TResult> Windows.Foundation.IAsyncOperation`1::get_Completed()
 // 0x0000003C TResult Windows.Foundation.IAsyncOperation`1::GetResults()
 // 0x0000003D System.Void Windows.Foundation.IClosable::Close()
-extern void IClosable_Close_m39D5256F4888029EB959CFA74DD76EB47B570871 (void);
+extern void IClosable_Close_m7DE2119A960C4E3898E6E5D03245D047BF113999 (void);
 // 0x0000003E Windows.Foundation.PropertyType Windows.Foundation.IPropertyValue::get_Type()
 extern void IPropertyValue_get_Type_m2BC440F5119A133BE4DD895657519ADAA3B34272 (void);
 // 0x0000003F System.Boolean Windows.Foundation.IPropertyValue::get_IsNumericScalar()
@@ -790,11 +790,11 @@ extern void DataReaderLoadOperation_Close_mE266746A01FA10759C5E81DC09FC288B23FB7
 // 0x00000226 System.Void Windows.Storage.Streams.DataReaderLoadOperation::Finalize()
 extern void DataReaderLoadOperation_Finalize_m4C8925E10CF7B72E3F9CC8909961EF318A81DA20 (void);
 // 0x00000227 System.UInt32 Windows.Storage.Streams.IBuffer::get_Capacity()
-extern void IBuffer_get_Capacity_m4FBAA7520F46F3CC6D15DCA72AE6DE7682A9A470 (void);
+extern void IBuffer_get_Capacity_m970326E6407CE3EC1CF64E69994517B316028691 (void);
 // 0x00000228 System.UInt32 Windows.Storage.Streams.IBuffer::get_Length()
-extern void IBuffer_get_Length_m5433B1C2AADBE9CE086F6DAE6E300C687A17DB19 (void);
+extern void IBuffer_get_Length_mF5A8C72B170E0798C7D1709BFD0E501FDF566349 (void);
 // 0x00000229 System.Void Windows.Storage.Streams.IBuffer::put_Length(System.UInt32)
-extern void IBuffer_put_Length_mF6D33616BBEEBF636AA7AF9EFA8525C3F721FE01 (void);
+extern void IBuffer_put_Length_m257651767765E9EB93F950F3ADA01F4ACF8A2D59 (void);
 // 0x0000022A System.Void Windows.Storage.Streams.IContentTypeProvider::$__Stripped0_get_ContentType()
 // 0x0000022B System.Void Windows.Storage.Streams.IDataReader::$__Stripped0_get_UnconsumedBufferLength()
 // 0x0000022C System.Void Windows.Storage.Streams.IDataReader::$__Stripped1_get_UnicodeEncoding()
@@ -827,30 +827,30 @@ extern void IDataReader_LoadAsync_m5320DE30E3837B33E10C0E0415A43CDE12669C5F (voi
 // 0x00000245 Windows.Storage.Streams.DataReader Windows.Storage.Streams.IDataReaderFactory::CreateDataReader(Windows.Storage.Streams.IInputStream)
 // 0x00000246 Windows.Storage.Streams.DataReader Windows.Storage.Streams.IDataReaderStatics::FromBuffer(Windows.Storage.Streams.IBuffer)
 // 0x00000247 Windows.Foundation.IAsyncOperationWithProgress`2<Windows.Storage.Streams.IBuffer,System.UInt32> Windows.Storage.Streams.IInputStream::ReadAsync(Windows.Storage.Streams.IBuffer,System.UInt32,Windows.Storage.Streams.InputStreamOptions)
-extern void IInputStream_ReadAsync_m0D2F91C5A51EB1AE5C1DBE7294381D13865E580B (void);
+extern void IInputStream_ReadAsync_m3148E992F8B97A601931757BD4D7BDBCFB044BF5 (void);
 // 0x00000248 System.Void Windows.Storage.Streams.IInputStreamReference::$__Stripped0_OpenSequentialReadAsync()
 // 0x00000249 Windows.Foundation.IAsyncOperationWithProgress`2<System.UInt32,System.UInt32> Windows.Storage.Streams.IOutputStream::WriteAsync(Windows.Storage.Streams.IBuffer)
-extern void IOutputStream_WriteAsync_m8B510F24BFF6F7A2BC98F37DF8DADC69694ED30F (void);
+extern void IOutputStream_WriteAsync_m1687F80EB6A6DD6461C42A5136A1C9F857012D52 (void);
 // 0x0000024A Windows.Foundation.IAsyncOperation`1<System.Boolean> Windows.Storage.Streams.IOutputStream::FlushAsync()
-extern void IOutputStream_FlushAsync_m36BD03B841D59D9168056963B19D19CD965A348C (void);
+extern void IOutputStream_FlushAsync_m2385B9659AADB56628AA3AD2A5D140F512F4A6E0 (void);
 // 0x0000024B System.UInt64 Windows.Storage.Streams.IRandomAccessStream::get_Size()
-extern void IRandomAccessStream_get_Size_mF9E844A817D64D4E78CD248CCBF6E07B77BCC3E6 (void);
+extern void IRandomAccessStream_get_Size_m3AB36B8C24B1F7D5F3563BCD2B7C35E42B37B974 (void);
 // 0x0000024C System.Void Windows.Storage.Streams.IRandomAccessStream::put_Size(System.UInt64)
-extern void IRandomAccessStream_put_Size_m891818528BF8D69955CF27BC4D777FE8998159A7 (void);
+extern void IRandomAccessStream_put_Size_m08869F9A11D478CFC25A1BF86996C0F4106316EA (void);
 // 0x0000024D Windows.Storage.Streams.IInputStream Windows.Storage.Streams.IRandomAccessStream::GetInputStreamAt(System.UInt64)
 extern void IRandomAccessStream_GetInputStreamAt_m9CC820A0D61D6396A06770F777B93F17F48195CB (void);
 // 0x0000024E Windows.Storage.Streams.IOutputStream Windows.Storage.Streams.IRandomAccessStream::GetOutputStreamAt(System.UInt64)
 extern void IRandomAccessStream_GetOutputStreamAt_m49D528CD63934AD30783BB759B104C80228DD023 (void);
 // 0x0000024F System.UInt64 Windows.Storage.Streams.IRandomAccessStream::get_Position()
-extern void IRandomAccessStream_get_Position_mEBCDA9CD0B45E8C1F7A99E7B40277F0B73E772B3 (void);
+extern void IRandomAccessStream_get_Position_mD2941C0CFB52A0BFC57360C53F403D626F23812C (void);
 // 0x00000250 System.Void Windows.Storage.Streams.IRandomAccessStream::Seek(System.UInt64)
-extern void IRandomAccessStream_Seek_m22E6D99C652709BF6A0BC31C53FCC63B528E998A (void);
+extern void IRandomAccessStream_Seek_m58852586F214DE8D79E1D41219B5B65A48A9BA2A (void);
 // 0x00000251 Windows.Storage.Streams.IRandomAccessStream Windows.Storage.Streams.IRandomAccessStream::CloneStream()
 extern void IRandomAccessStream_CloneStream_mB8E84904911B293CCA5CB6420565DD027133866A (void);
 // 0x00000252 System.Boolean Windows.Storage.Streams.IRandomAccessStream::get_CanRead()
-extern void IRandomAccessStream_get_CanRead_mAD979BED8B107A5A477E184F0A56C1C7880CF071 (void);
+extern void IRandomAccessStream_get_CanRead_m2BE61CC6AD9C0D8C909D4F381BAFF5C0EBAE0678 (void);
 // 0x00000253 System.Boolean Windows.Storage.Streams.IRandomAccessStream::get_CanWrite()
-extern void IRandomAccessStream_get_CanWrite_m3E677DD40D63CBE50AB0B17CEB72B8AFEC8D2146 (void);
+extern void IRandomAccessStream_get_CanWrite_m25A48257EDAB2E9FC31EB9A782B3A460A6342838 (void);
 // 0x00000254 Windows.Foundation.IAsyncOperation`1<Windows.Storage.Streams.IRandomAccessStreamWithContentType> Windows.Storage.Streams.IRandomAccessStreamReference::OpenReadAsync()
 extern void IRandomAccessStreamReference_OpenReadAsync_mFFC89BD4433104141D88B0A7A3FF4632C8368176 (void);
 // 0x00000255 System.UInt64 Windows.System.IMemoryManagerStatics::get_AppMemoryUsage()
@@ -1013,11 +1013,11 @@ extern void PropertyChangedEventHandler_Invoke_m29A9173001968B28431AA21F2C7CF79F
 // 0x000002CB Windows.UI.Xaml.Interop.IBindableIterator Windows.UI.Xaml.Interop.IBindableIterable::First()
 extern void IBindableIterable_First_m91EC6ED0173145266318FDB7F9074798CD766BD7 (void);
 // 0x000002CC System.Object Windows.UI.Xaml.Interop.IBindableIterator::get_Current()
-extern void IBindableIterator_get_Current_m925423E867873FA1E4ED0804031A06C0852D7A54 (void);
+extern void IBindableIterator_get_Current_m53A4B6F2DECC874908CA9335785007A39D6FC93E (void);
 // 0x000002CD System.Boolean Windows.UI.Xaml.Interop.IBindableIterator::get_HasCurrent()
-extern void IBindableIterator_get_HasCurrent_m4DAEC47CD0F9FD8C8102793367E1977C7F759FFA (void);
+extern void IBindableIterator_get_HasCurrent_m4FD33F7F3A504A8F4A4C7DE3965342B19EA3A974 (void);
 // 0x000002CE System.Boolean Windows.UI.Xaml.Interop.IBindableIterator::MoveNext()
-extern void IBindableIterator_MoveNext_m4FB28C3D3863BB69F92027EE724CA8BE91833706 (void);
+extern void IBindableIterator_MoveNext_mA70DABC057BE3ED9199D4E0E6FEBDF6ED3570A75 (void);
 // 0x000002CF System.Object Windows.UI.Xaml.Interop.IBindableVector::GetAt(System.UInt32)
 extern void IBindableVector_GetAt_m33D2170810828C01473D9BDC22745A0354FA4FED (void);
 // 0x000002D0 System.UInt32 Windows.UI.Xaml.Interop.IBindableVector::get_Size()
@@ -1046,8 +1046,8 @@ extern void IBindableVectorView_get_Size_m4F48139B27CB215D7E728F77E748FA6573F7DA
 extern void IBindableVectorView_IndexOf_mD85EC41D34BC2E450FA0133CC802906157D765F2 (void);
 static Il2CppMethodPointer s_methodPointers[731] = 
 {
-	AsyncActionCompletedHandler__ctor_m8174AC23FE63E72DDA50BF9060B8EA33D3CC2FC6,
-	AsyncActionCompletedHandler_Invoke_m9E54CBC26496783FCB9C5EF40E4B947F2C0E0EC6,
+	AsyncActionCompletedHandler__ctor_mFB087F426B85A21CFD3EC42705296735802E4C6E,
+	AsyncActionCompletedHandler_Invoke_m351D4D540D59485AB4607AD62FDB182A704C4239,
 	NULL,
 	NULL,
 	NULL,
@@ -1090,14 +1090,14 @@ static Il2CppMethodPointer s_methodPointers[731] =
 	NULL,
 	NULL,
 	NULL,
-	IAsyncAction_put_Completed_m153FFA20288B2A12135D5E31F5E321CB7C7C32A4,
+	IAsyncAction_put_Completed_mE1223109A7CBD5DA29413156BA2C75157F169C87,
 	IAsyncAction_get_Completed_mEEA8DB3EB0D4FE9F33A54B6A16D65902B70DCB39,
 	IAsyncAction_GetResults_mD06D8F02D7793FED272208F851EF8A2D9B25FE38,
-	IAsyncInfo_get_Id_m3863CB02C1CDBA1050DAAE7311DF9F3E8BCD9D74,
-	IAsyncInfo_get_Status_m7E8AA78C1877123B35EAFA58FEF0FA86D8A97583,
-	IAsyncInfo_get_ErrorCode_m37ACAD97746ABA13006C88EDF582C3B73B68D806,
-	IAsyncInfo_Cancel_m53FE58D39AE61799A01EE7ECB9429CB3EE01EEFE,
-	IAsyncInfo_Close_mD8F3D2C7103B340A9FF16F58333E33643F552635,
+	IAsyncInfo_get_Id_m66B4DB488CAE8CD259581D1CCAB94FBFA05BC733,
+	IAsyncInfo_get_Status_m9393658D0FD28BE7960FBB531A31A1E1CB106F80,
+	IAsyncInfo_get_ErrorCode_m0C4F0079B788C88A5A572A827AAACA0B3BB233C5,
+	IAsyncInfo_Cancel_m55A00D21BF943DA94D606044A66295FEF77139EE,
+	IAsyncInfo_Close_m186908B02D6E9850DB3376510E0C3FB99B891FBB,
 	NULL,
 	NULL,
 	NULL,
@@ -1106,7 +1106,7 @@ static Il2CppMethodPointer s_methodPointers[731] =
 	NULL,
 	NULL,
 	NULL,
-	IClosable_Close_m39D5256F4888029EB959CFA74DD76EB47B570871,
+	IClosable_Close_m7DE2119A960C4E3898E6E5D03245D047BF113999,
 	IPropertyValue_get_Type_m2BC440F5119A133BE4DD895657519ADAA3B34272,
 	IPropertyValue_get_IsNumericScalar_mC8DE97926668A5F2EA3F4A9B128E966CBC7B0D60,
 	IPropertyValue_GetUInt8_m25D96C5F9AC133BF7B682C59FE83EE05A0075B05,
@@ -1596,9 +1596,9 @@ static Il2CppMethodPointer s_methodPointers[731] =
 	DataReaderLoadOperation_Cancel_mC4B6A32965095E940CB547409E467577CB52C3F1,
 	DataReaderLoadOperation_Close_mE266746A01FA10759C5E81DC09FC288B23FB77EB,
 	DataReaderLoadOperation_Finalize_m4C8925E10CF7B72E3F9CC8909961EF318A81DA20,
-	IBuffer_get_Capacity_m4FBAA7520F46F3CC6D15DCA72AE6DE7682A9A470,
-	IBuffer_get_Length_m5433B1C2AADBE9CE086F6DAE6E300C687A17DB19,
-	IBuffer_put_Length_mF6D33616BBEEBF636AA7AF9EFA8525C3F721FE01,
+	IBuffer_get_Capacity_m970326E6407CE3EC1CF64E69994517B316028691,
+	IBuffer_get_Length_mF5A8C72B170E0798C7D1709BFD0E501FDF566349,
+	IBuffer_put_Length_m257651767765E9EB93F950F3ADA01F4ACF8A2D59,
 	NULL,
 	NULL,
 	NULL,
@@ -1628,19 +1628,19 @@ static Il2CppMethodPointer s_methodPointers[731] =
 	NULL,
 	NULL,
 	NULL,
-	IInputStream_ReadAsync_m0D2F91C5A51EB1AE5C1DBE7294381D13865E580B,
+	IInputStream_ReadAsync_m3148E992F8B97A601931757BD4D7BDBCFB044BF5,
 	NULL,
-	IOutputStream_WriteAsync_m8B510F24BFF6F7A2BC98F37DF8DADC69694ED30F,
-	IOutputStream_FlushAsync_m36BD03B841D59D9168056963B19D19CD965A348C,
-	IRandomAccessStream_get_Size_mF9E844A817D64D4E78CD248CCBF6E07B77BCC3E6,
-	IRandomAccessStream_put_Size_m891818528BF8D69955CF27BC4D777FE8998159A7,
+	IOutputStream_WriteAsync_m1687F80EB6A6DD6461C42A5136A1C9F857012D52,
+	IOutputStream_FlushAsync_m2385B9659AADB56628AA3AD2A5D140F512F4A6E0,
+	IRandomAccessStream_get_Size_m3AB36B8C24B1F7D5F3563BCD2B7C35E42B37B974,
+	IRandomAccessStream_put_Size_m08869F9A11D478CFC25A1BF86996C0F4106316EA,
 	IRandomAccessStream_GetInputStreamAt_m9CC820A0D61D6396A06770F777B93F17F48195CB,
 	IRandomAccessStream_GetOutputStreamAt_m49D528CD63934AD30783BB759B104C80228DD023,
-	IRandomAccessStream_get_Position_mEBCDA9CD0B45E8C1F7A99E7B40277F0B73E772B3,
-	IRandomAccessStream_Seek_m22E6D99C652709BF6A0BC31C53FCC63B528E998A,
+	IRandomAccessStream_get_Position_mD2941C0CFB52A0BFC57360C53F403D626F23812C,
+	IRandomAccessStream_Seek_m58852586F214DE8D79E1D41219B5B65A48A9BA2A,
 	IRandomAccessStream_CloneStream_mB8E84904911B293CCA5CB6420565DD027133866A,
-	IRandomAccessStream_get_CanRead_mAD979BED8B107A5A477E184F0A56C1C7880CF071,
-	IRandomAccessStream_get_CanWrite_m3E677DD40D63CBE50AB0B17CEB72B8AFEC8D2146,
+	IRandomAccessStream_get_CanRead_m2BE61CC6AD9C0D8C909D4F381BAFF5C0EBAE0678,
+	IRandomAccessStream_get_CanWrite_m25A48257EDAB2E9FC31EB9A782B3A460A6342838,
 	IRandomAccessStreamReference_OpenReadAsync_mFFC89BD4433104141D88B0A7A3FF4632C8368176,
 	NULL,
 	NULL,
@@ -1761,9 +1761,9 @@ static Il2CppMethodPointer s_methodPointers[731] =
 	PropertyChangedEventHandler__ctor_m8F87EA6305A644C8B0F6F6614E3E43AF83E6EEA5,
 	PropertyChangedEventHandler_Invoke_m29A9173001968B28431AA21F2C7CF79FDA81A9FC,
 	IBindableIterable_First_m91EC6ED0173145266318FDB7F9074798CD766BD7,
-	IBindableIterator_get_Current_m925423E867873FA1E4ED0804031A06C0852D7A54,
-	IBindableIterator_get_HasCurrent_m4DAEC47CD0F9FD8C8102793367E1977C7F759FFA,
-	IBindableIterator_MoveNext_m4FB28C3D3863BB69F92027EE724CA8BE91833706,
+	IBindableIterator_get_Current_m53A4B6F2DECC874908CA9335785007A39D6FC93E,
+	IBindableIterator_get_HasCurrent_m4FD33F7F3A504A8F4A4C7DE3965342B19EA3A974,
+	IBindableIterator_MoveNext_mA70DABC057BE3ED9199D4E0E6FEBDF6ED3570A75,
 	IBindableVector_GetAt_m33D2170810828C01473D9BDC22745A0354FA4FED,
 	IBindableVector_get_Size_m45347BCD42A1FE180ED2B377BB9C88C7B50CD7D9,
 	IBindableVector_GetView_m9736FE93BC8979E0CBF8ED26090D1FE54C2E1A38,
