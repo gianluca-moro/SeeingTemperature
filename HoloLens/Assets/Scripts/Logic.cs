@@ -25,9 +25,6 @@ public class Logic : MonoBehaviour
     private bool isRunning = false;
     private bool recivedTemp = false;
     private Thread t;
-    private float[][] data;
-    // private ThermalData thermal_visualizer;
-
 
     /*
      * Deafult: mode = 0;
@@ -37,23 +34,21 @@ public class Logic : MonoBehaviour
      */
     private int mode = 0;
 
+
+    public FaceTracking faceTracking;
+
     void Start()
     {
-        #if UNITY_EDITOR
-            Debug.unityLogger.logEnabled = true;
-#else
-            Debug.unityLogger.logEnabled = false;
-#endif
         //LeptonTcpClient.TcpClient.GetMultipleFrames(20);
-        data = GetDummyData();
         client = new LeptonTcpClient.TcpClient();
-        // thermal_visualizer = new ThermalData();
-        if(client.Setup() == 0)
+        faceTracking = new FaceTracking();
+        if (client.Setup() == 0)
         {
             isRunning = true;
             t = new Thread(DataProcessing);
             t.Start();
-        } else
+        }
+        else
         {
             Debug.Log("Connection with Server not established (Logic.cs)");
         }
@@ -108,38 +103,23 @@ public class Logic : MonoBehaviour
         {
             try
             {
-                data = client.GetSingleFrame().Temperatures;
+                LeptonTcpClient.ThermalData data = client.GetSingleFrame();
 
-                if (data != null)
+                if (data != null && data.Temperatures != null)
                 {
-                    data = Transpose(data);
-                    int [] a = CameraCalibration.CameraCalibration.MapPixel(3904/2,2196/2);
+                    int[] a = CameraCalibration.CameraCalibration.MapPixel(3904 / 2, 2196 / 2);
                     int i = a[0];
                     int j = a[1];
-                    if(0 <= i && i <= 160 && 0 <= j && j <= 120)
-                        temperature = data[i][j] + offset;
+                    if (0 <= i && i <= 160 && 0 <= j && j <= 120)
+                        temperature = data.Temperatures[i][j] + offset;
                     else
-                        temperature = -(data[80][60] + offset);
+                        temperature = -(data.Temperatures[80][60] + offset);
                     recivedTemp = true;
                 }
             }
             catch (Exception) { }
             Thread.Sleep(200);
         }
-    }
-
-    public float[][] Transpose(float[][] data)
-    {
-        float[][] ret = new float[data[0].Length][];
-        for (int i = 0; i < data[0].Length; i++)
-        {
-            ret[i] = new float[data.Length];
-            for (int j = 0; j < data.Length; j++)
-            {
-                ret[i][j] = data[j][i];
-            }
-        }
-        return ret;
     }
 
     public void ChangeMode(int mode)
@@ -152,42 +132,30 @@ public class Logic : MonoBehaviour
         {
             case 0:
                 thermometer.SetActive(true);
+                //faceTracking.StopFaceTrack();
                 photos.deactivateCanvas();
                 break;
             case 1:
-                photos.takePhoto(data);
-                // thermal_visualizer.Render(data);
+                //faceTracking.StopFaceTrack();
                 thermalImage.SetActive(true);
+                photos.takePhoto();
                 break;
             case 2:
                 photos.deactivateCanvas();
                 thermalDetector.SetActive(true);
+                //faceTracking.StartFaceTrack(thermalDetector);
                 break;
             default:
+                //faceTracking.StopFaceTrack();
                 photos.deactivateCanvas();
                 thermometer.SetActive(true);
                 break;
         }
     }
 
-    public float[][] GetDummyData()
+    private void OnApplicationQuit()
     {
-        System.Random rnd = new System.Random();
-        float[][] ret = new float[128][];
-        for(int i = 0; i < ret.Length; i++)
-        {
-            ret[i] = new float[169];
-            for(int j = 0; j < ret[i].Length; j++)
-            {
-                ret[i][j] = 15 + rnd.Next(15);
-            }
-        }
-        return ret;
-    }
-
-private void OnApplicationQuit()
-    {
-        if(client != null)
+        if (client != null)
         {
             isRunning = false;
             client.Cleanup();
