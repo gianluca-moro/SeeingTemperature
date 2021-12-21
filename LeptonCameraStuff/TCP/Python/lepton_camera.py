@@ -1,5 +1,4 @@
 '''
-    author: Gianluca
     parts copied/adapted from: https://github.com/groupgets/purethermal1-uvc-capture/blob/master/python/uvc-radiometry.py
 '''
 
@@ -77,12 +76,10 @@ class LeptonCamera:
     @staticmethod
     def get_temperature_data():
         temperature_data = q.get(True, 500)
-        temperature_data = (temperature_data - 27315) / 100.00      # TODO: wtf does this do??
+        temperature_data = (temperature_data - 27315) / 100.00
         return temperature_data
 
 
-    # TODO: maybe into __del__ method, so that if someone would forget to call this,
-    # it would automatically once GC runs on LeptonCamera object
     def stop_cam_stream(self):
         libuvc.uvc_stop_streaming(self.devh)
         libuvc.uvc_unref_device(self.dev)

@@ -1,5 +1,4 @@
 '''
-    author: Gianluca
     description: TCP client which receives Lepton Camera frame(s) (temperature data) from the server
         using OpenCV to display the temperature data
     usage: 

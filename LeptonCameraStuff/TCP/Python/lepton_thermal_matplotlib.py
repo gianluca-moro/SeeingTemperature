@@ -1,5 +1,4 @@
 '''
-    author: Gianluca
     description: TCP client which receives Lepton Camera frame(s) (temperature data) from the server
         using MatplotLib to display the temperature data
     usage: 

@@ -1,5 +1,4 @@
 '''
-    author: Gianluca
     description: TCP server which sends Lepton Camera frames (temperature data) to the client
 '''
 
@@ -16,8 +15,7 @@ EOF_MESSAGE = '<EOF>'
 lepton_camera = LeptonCamera()
 frame_width, frame_height = lepton_camera.frame_width, lepton_camera.frame_height
 
-# TODO: maybe put recv_all and send_all methods into seperate file (tcp_utils.py) 
-# because these are used by server and clients and are identical
+
 def recv_all(connection):
     data = ''
     while True:
